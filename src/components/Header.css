@@ -1,0 +1,29 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  z-index: 10;
+}
+
+.site-header-logo {
+  height: 32px;
+  width: auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    height: 60px;
+  }
+
+  .site-header-logo {
+    height: 26px;
+  }
+}

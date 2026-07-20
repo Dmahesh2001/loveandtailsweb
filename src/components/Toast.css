@@ -1,0 +1,24 @@
+.toast-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 32px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10000;
+  padding: 0 16px;
+}
+
+.toast {
+  pointer-events: auto;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 16px 28px;
+  border-radius: 28px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
