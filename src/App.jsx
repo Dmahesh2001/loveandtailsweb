@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import IntroAnimation from './components/IntroAnimation';
 import Building from './pages/Building';
@@ -38,6 +39,7 @@ function App() {
           </Routes>
         </motion.div>
       )}
+      <Analytics />
     </BrowserRouter>
   );
 }
