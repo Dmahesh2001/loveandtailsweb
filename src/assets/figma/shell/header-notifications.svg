@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Header / Notifications">
+<g id="Icon">
+<path id="Vector" d="M27.7919 30.5C27.7919 32.5941 26.0943 34.2917 24.0002 34.2917C21.9061 34.2917 20.2085 32.5941 20.2085 30.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke="#121212"/>
+<path id="Vector_2" d="M31.8337 30.5H16.1663C15.1079 30.5 14.25 29.642 14.25 28.5837C14.25 28.0755 14.4519 27.5881 14.8113 27.2287L15.4648 26.5752C16.0743 25.9657 16.4167 25.139 16.4167 24.2771V21.2917C16.4167 17.1035 19.8118 13.7083 24 13.7083C28.1882 13.7083 31.5833 17.1035 31.5833 21.2917V24.2771C31.5833 25.139 31.9258 25.9657 32.5353 26.5752L33.1887 27.2287C33.5481 27.5881 33.75 28.0755 33.75 28.5837C33.75 29.642 32.892 30.5 31.8337 30.5Z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke="#121212"/>
+</g>
+<circle id="Badge" cx="35" cy="14" r="3.25" fill="#CE2C2C" stroke-width="1.5" stroke="white"/>
+</g>
+</svg>

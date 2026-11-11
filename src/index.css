@@ -1,3 +1,86 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Love & Tails tokens (from Figma: L-T / webpages). shadcn semantic tokens
+   map onto them so every ui/* component picks up the brand automatically. */
+:root {
+  --radius: 0.75rem;
+
+  --background: #ffffff;
+  --foreground: #121212;
+  --card: #ffffff;
+  --card-foreground: #121212;
+  --popover: #ffffff;
+  --popover-foreground: #121212;
+  --primary: #ce2c2c;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f0f0;
+  --secondary-foreground: #000000;
+  --muted: #f0f0f0;
+  --muted-foreground: #6b7280;
+  --accent: #f5f5f5;
+  --accent-foreground: #121212;
+  --destructive: #ce2c2c;
+  --destructive-foreground: #ffffff;
+  --border: #eaeaeb;
+  --input: #e5e5e7;
+  --ring: #ce2c2c;
+}
+
+@theme inline {
+  --font-sans: 'TikTok Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-brand: 'Pacifico', cursive;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand palette */
+  --color-brand: #ce2c2c;
+  --color-brand-soft: #fdecec;
+  --color-ink: #121212;
+  --color-icon: #141b34;
+  --color-subtle: #6b7280;
+  --color-line: #efefef;
+  --color-surface: #fafafa;
+  --color-success: #16a34a;
+  --color-success-soft: #e8f7ee;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    margin: 0;
+  }
+}
+
 html {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
@@ -27,16 +110,12 @@ html:focus-within::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.3);
 }
 
-body {
-  margin: 0;
-  font-family: 'TikTok Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Splash loading bar (Figma 1495:13211) */
+@keyframes splash {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
 }

@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Love & Tails — web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React 19 + Vite + Tailwind CSS v4 + [shadcn/ui](https://ui.shadcn.com), built from the Figma file **L-T › webpages**.
 
-## Available Scripts
+## Scripts
 
-In the project directory, you can run:
+```bash
+npm install
+npm run dev       # http://localhost:3000
+npm run build     # production build → dist/
+npm run preview   # serve the build locally
+```
 
-### `npm start`
+## Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+src/
+  components/
+    ui/            shadcn/ui components (Button has extra Love & Tails pill sizes + brand variants)
+    app/           app shell (Sidebar, MobileHeader, TabBar, TopBar) and shared pieces
+                   (PostCard, PetCard, SearchField, Chip, ShareDialog, ResponsiveModal, …)
+    auth/          Login / Sign up layout + form
+    onboarding/    step template (StepLayout) and centred FocusLayout
+  pages/           one file per screen (see routes below)
+  data/            mock data (pets, the signed-in user)
+  assets/figma/    images and icons exported from Figma
+  index.css        Tailwind + design tokens (brand #ce2c2c, TikTok Sans, Pacifico)
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Breakpoints follow the Figma frames: **390** mobile (mobile header + bottom tab bar), **768** tablet
+(collapsed 80px sidebar, `md:`), **1440** laptop (expanded 248px sidebar, `xl:`).
 
-### `npm test`
+## Routes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Route | Figma screen |
+| --- | --- |
+| `/` | Landing (mobile: intro carousel) |
+| `/splash`, `/loading` | Splash, Loading |
+| `/login`, `/signup`, `/welcome-back` | 02 Login, 14 Sign up / Welcome back |
+| `/onboarding/1…6` (`/personalize` = step 4) | 06 Onboarding step, 15 Personalize |
+| `/badge-quiz/1…6` | 16 Badge quiz (+ voice answer) |
+| `/kyc` | 18 KYC verification |
+| `/permissions` | Permissions |
+| `/home` | 01 Home feed |
+| `/create`, `/create/edit` | 12 Create post, Media editor |
+| `/reels` | 13 Reels |
+| `/adopt`, `/adopt/:petId`, `/adopt/new` | 04 Adopt, 07 Pet details, 17 Create adoption profile |
+| `/applications` | 11 Application status |
+| `/messages`, `/messages/:id` | 03 Messages |
+| `/notifications` | 10 Notifications |
+| `/profile` | 05 Profile |
+| `/pets/:petId`, `/pets/:petId/documents` | 08 My pet’s profile, 09 Documents (+ upload modal, `?upload=1`) |
+| `/settings`, `/settings/profile`, `/settings/accounts` | 19 Settings · Edit profile / Profile menu, Switch accounts |
+| `/share` | Share |
+| `/search` | (no Figma frame — composed from the design system) |
+| `/coming-soon` | the original pre-launch page |
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Data is mocked; there is no backend yet.
