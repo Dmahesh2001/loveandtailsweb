@@ -14,7 +14,7 @@ export default function Login() {
         switchPrompt="Don’t have an account?"
         switchLabel="Sign up"
         switchTo="/signup"
-        onContinue={() => navigate('/home')}
+        onContinue={() => navigate('/splash')}
       />
     </AuthLayout>
   );

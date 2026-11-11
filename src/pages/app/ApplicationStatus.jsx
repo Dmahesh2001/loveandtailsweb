@@ -150,16 +150,16 @@ export default function ApplicationStatus() {
       </div>
 
       {/* ---------- Tablet / desktop ---------- */}
-      <div className="mx-auto hidden w-full max-w-[1200px] px-6 pt-9 pb-12 md:block xl:px-12">
+      <div className="mx-auto hidden w-full max-w-[1200px] px-6 pt-9 pb-12 md:block main-xl:px-12">
         <div className="flex items-center gap-3">
           <h1 className="text-[28px] font-semibold text-ink">Max’s application</h1>
-          <Link to="/adopt" className="ml-auto text-sm font-medium text-brand hover:underline xl:hidden">
+          <Link to="/adopt" className="ml-auto text-sm font-medium text-brand hover:underline main-xl:hidden">
             Browse pets
           </Link>
         </div>
-        <div className="mt-6 flex flex-col gap-8 xl:flex-row xl:items-start">
-          <ApplicationCard className="rounded-3xl border border-border bg-white px-6 pt-7 pb-10 xl:w-[560px]" />
-          <MeetCard className="xl:w-[400px]" />
+        <div className="mt-6 flex flex-col gap-8 main-xl:flex-row main-xl:items-start">
+          <ApplicationCard className="rounded-3xl border border-border bg-white px-6 pt-7 pb-10 main-xl:w-[560px]" />
+          <MeetCard className="main-xl:w-[400px]" />
         </div>
       </div>
     </>

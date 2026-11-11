@@ -3,6 +3,22 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Content-width breakpoints for pages inside the app shell. They query the
+   "main" container (AppShell's content column) instead of the viewport, so
+   layouts adapt when the sidebar is expanded, collapsed or hidden.
+   Thresholds = the old viewport breakpoints minus the sidebar that used to
+   sit beside them: lg 1024 − 80 = 944, xl 1280 − 248 = 1032. */
+@custom-variant main-lg {
+  @container main (width >= 944px) {
+    @slot;
+  }
+}
+@custom-variant main-xl {
+  @container main (width >= 1032px) {
+    @slot;
+  }
+}
+
 /* Love & Tails tokens (from Figma: L-T / webpages). shadcn semantic tokens
    map onto them so every ui/* component picks up the brand automatically. */
 :root {
@@ -118,4 +134,10 @@ code {
 @keyframes splash {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(250%); }
+}
+
+/* Moments playback bar (Figma 1488:2955). */
+@keyframes moment-progress {
+  from { width: 0; }
+  to { width: 100%; }
 }

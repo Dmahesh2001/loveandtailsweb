@@ -35,7 +35,7 @@ const STEPS = 3;
 
 function Preview({ pet, photos }) {
   return (
-    <div className="flex w-full flex-col gap-3.5 rounded-3xl bg-[#fbedea] p-6 xl:w-[312px]">
+    <div className="flex w-full flex-col gap-3.5 rounded-3xl bg-[#fbedea] p-6 main-xl:w-[312px]">
       <p className="text-[15px] font-semibold text-ink">How adopters will see {pet.name}</p>
       <PetCard
         name={pet.name}
@@ -80,7 +80,7 @@ export default function CreateAdoptionProfile() {
   const back = () => (step > 1 ? setStep(step - 1) : navigate(-1));
 
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-4 pt-4 pb-28 md:px-6 md:pt-12 md:pb-12 xl:px-[72px]">
+    <div className="mx-auto w-full max-w-[1200px] px-4 pt-4 pb-28 md:px-6 md:pt-12 md:pb-12 main-xl:px-[72px]">
       {/* Mobile header */}
       <div className="mb-6 flex items-center gap-4 md:hidden">
         <button
@@ -94,7 +94,7 @@ export default function CreateAdoptionProfile() {
         <ProgressBar value={step / STEPS} className="flex-1" />
       </div>
 
-      <div className="flex flex-col gap-10 xl:flex-row xl:items-start xl:gap-20">
+      <div className="flex flex-col gap-10 main-xl:flex-row main-xl:items-start main-xl:gap-20">
         <div className="flex w-full max-w-[560px] flex-col gap-4">
           <p className="hidden text-[13px] font-medium text-brand md:block">
             Step {step} of {STEPS}

@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import TopBar, { PAGE_CONTAINER } from '@/components/app/TopBar';
+import { PAGE_CONTAINER } from '@/components/app/TopBar';
 import { Card, ChipTabs, PetRow, PostCard } from '@/components/app/common';
 import { Button } from '@/components/ui/button';
+import FeedSkeleton from '@/components/app/FeedSkeleton';
 import { ME } from '@/components/app/nav-config';
 import petMax from '@/assets/figma/pets/max.jpg';
 import petEva from '@/assets/figma/pets/eva.jpg';
 import petBruno from '@/assets/figma/pets/bruno.jpg';
 import petBen from '@/assets/figma/pets/ben.jpg';
 import meAvatar from '@/assets/figma/home/me-avatar.png';
+import { MOMENTS, formatCount } from '@/data/moments';
 
 /* 01 · Home feed — Figma 1476:141 (1440) / 1476:287 (768) / 1476:390 (390) */
 
@@ -65,13 +67,46 @@ function PetsNearYou() {
 /* Tablet: the right rail collapses into a horizontal strip above the feed. */
 function PetsStrip() {
   return (
-    <Card className="hidden flex-col gap-3 p-5 md:flex xl:hidden">
+    <Card className="hidden flex-col gap-3 p-5 md:flex main-xl:hidden">
       <h2 className="text-base font-semibold text-ink">Looking for a home near you</h2>
       <div className="-mx-1 flex gap-4 overflow-x-auto px-1">
         {PETS.map((pet) => (
           <Link key={pet.id} to={`/adopt/${pet.id}`} className="flex shrink-0 flex-col items-center gap-2">
             <img src={pet.photo} alt="" className="size-[112px] rounded-[14px] object-cover" />
             <span className="text-sm font-medium text-ink">{pet.name}</span>
+          </Link>
+        ))}
+      </div>
+    </Card>
+  );
+}
+
+/* Entry point to Moments (vertical feed at /moments). */
+function MomentsStrip() {
+  return (
+    <Card className="flex flex-col gap-3 p-4 md:p-5">
+      <div className="flex items-center">
+        <h2 className="flex-1 text-base font-semibold text-ink md:text-[17px]">Moments</h2>
+        <Link to="/moments" className="text-sm font-medium text-brand">
+          Watch all
+        </Link>
+      </div>
+      <div className="-mx-4 flex gap-3 overflow-x-auto px-4 [scrollbar-width:none] md:-mx-5 md:px-5 [&::-webkit-scrollbar]:hidden">
+        {MOMENTS.map((m) => (
+          <Link
+            key={m.id}
+            to={`/moments/${m.id}`}
+            aria-label={`Moment by ${m.author.name}`}
+            className="relative aspect-[9/16] w-[112px] shrink-0 overflow-hidden rounded-[14px] bg-black"
+          >
+            <img src={m.photo} alt="" className="size-full object-cover transition-transform duration-300 hover:scale-105" />
+            <span className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-1 bg-gradient-to-t from-black/70 to-transparent px-2 pt-8 pb-2 text-white">
+              <span className="flex items-center gap-1.5">
+                <img src={m.author.avatar} alt="" className="size-5 rounded-full object-cover ring-1 ring-white" />
+                <span className="truncate text-[11px] font-semibold">{m.author.user}</span>
+              </span>
+              <span className="text-[11px] font-medium">♥ {formatCount(m.likes)}</span>
+            </span>
           </Link>
         ))}
       </div>
@@ -92,30 +127,52 @@ function UpcomingMeet() {
   );
 }
 
+/*
+ * 25 · Loading (Figma 1495:13238 / 1495:13316 / 1495:13374): the feed shows its skeleton on the first
+ * visit of a session while posts "load" (mock data, so the fetch is simulated). Later visits render at once.
+ */
+let feedLoaded = false;
+function useFirstLoad(ms = 900) {
+  const [loading, setLoading] = useState(!feedLoaded);
+  useEffect(() => {
+    if (!loading) return undefined;
+    const t = setTimeout(() => {
+      feedLoaded = true;
+      setLoading(false);
+    }, ms);
+    return () => clearTimeout(t);
+  }, [loading, ms]);
+  return loading;
+}
+
 export default function HomeFeed() {
   const [tab, setTab] = useState(TABS[0]);
+  const loading = useFirstLoad();
+
+  if (loading) return <FeedSkeleton />;
 
   return (
     <>
-      <TopBar title="Home" search="Search pets, people, places">
-        <ChipTabs options={TABS} value={tab} onChange={setTab} className="ml-5" />
-      </TopBar>
+      <h1 className="sr-only">Home</h1>
 
-      <div className={`${PAGE_CONTAINER} px-4 pt-3 pb-6 md:px-6 md:pt-6 xl:pt-6`}>
-        <ChipTabs options={TABS} value={tab} onChange={setTab} className="mb-3 xl:hidden md:mb-5" />
-
+      <div className={`${PAGE_CONTAINER} px-4 pb-6 md:px-6`}>
         <div className="flex items-start gap-12">
           <main className="flex w-full max-w-[600px] min-w-0 flex-col gap-3 md:gap-5">
-            <div className="hidden xl:block">
+            {/* Feed tabs: left-aligned with the feed, pinned while it scrolls (below the 60px mobile header). */}
+            <div className="sticky top-[60px] z-10 -mb-3 bg-surface pt-3 pb-3 md:top-0 md:-mb-5 md:pt-6 md:pb-5">
+              <ChipTabs options={TABS} value={tab} onChange={setTab} className="max-w-full" />
+            </div>
+            <div className="hidden main-xl:block">
               <Composer />
             </div>
             <PetsStrip />
+            <MomentsStrip />
             {POSTS.map((post) => (
               <PostCard key={post.id} {...post} />
             ))}
           </main>
 
-          <aside className="sticky top-[100px] hidden w-[340px] shrink-0 flex-col gap-5 xl:flex">
+          <aside className="sticky top-6 mt-6 hidden w-[340px] shrink-0 flex-col gap-5 main-xl:flex">
             <PetsNearYou />
             <UpcomingMeet />
           </aside>

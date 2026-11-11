@@ -16,7 +16,7 @@ const MyPetProfile = lazy(() => import('./pages/app/MyPetProfile'));
 const Documents = lazy(() => import('./pages/app/Documents'));
 const ApplicationStatus = lazy(() => import('./pages/app/ApplicationStatus'));
 const CreatePost = lazy(() => import('./pages/app/CreatePost'));
-const Reels = lazy(() => import('./pages/app/Reels'));
+const Moments = lazy(() => import('./pages/app/Moments'));
 const CreateAdoptionProfile = lazy(() => import('./pages/app/CreateAdoptionProfile'));
 const SettingsLayout = lazy(() => import('./pages/settings/SettingsLayout'));
 const EditProfile = lazy(() => import('./pages/settings/EditProfile'));
@@ -72,7 +72,8 @@ const router = createBrowserRouter([
           { path: 'help', element: <HelpCentre />, handle: { mobileHeader: false } },
         ],
       },
-      { path: '/reels', element: <Reels />, handle: { bg: 'white', mobileHeader: false } },
+      { path: '/moments/:momentId?', element: <Moments />, handle: { bg: 'white', mobileHeader: false } },
+      { path: '/reels', element: <Navigate to="/moments" replace /> },
       { path: '/create', element: <CreatePost />, handle: { tabBar: false, mobileHeader: false } },
       { path: '/adopt', element: <Adopt />, handle: { bg: 'white' } },
       {

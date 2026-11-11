@@ -170,11 +170,11 @@ export default function SettingsLayout() {
 
   return (
     <div className="flex min-h-svh bg-white">
-      <aside className="w-[260px] shrink-0 border-r border-border px-5 pt-7 pb-8 xl:w-[300px]">
+      <aside className="w-[260px] shrink-0 border-r border-border px-5 pt-7 pb-8 main-xl:w-[300px]">
         <h1 className="mb-5 text-2xl font-semibold text-ink">Settings</h1>
         <SettingsMenu />
       </aside>
-      <div className="min-w-0 flex-1 px-8 pt-10 pb-12 xl:px-[92px]">
+      <div className="min-w-0 flex-1 px-8 pt-10 pb-12 main-xl:px-[92px]">
         <div className="max-w-[600px]">{atRoot ? <EditProfile /> : <Outlet />}</div>
       </div>
     </div>

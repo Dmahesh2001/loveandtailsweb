@@ -164,7 +164,7 @@ export default function Documents() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-4 pt-5 pb-10 md:px-6 md:pt-8 xl:px-12">
+    <div className="mx-auto w-full max-w-[1200px] px-4 pt-5 pb-10 md:px-6 md:pt-8 main-xl:px-12">
       <header className="flex items-center gap-4">
         <div className="min-w-0 flex-1">
           <h1 className="text-[24px] font-semibold text-ink md:text-[28px]">Documents</h1>

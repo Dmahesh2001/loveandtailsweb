@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { cn } from '@/lib/utils';
+import { useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { SlidersHorizontal } from 'lucide-react';
+import { photoFilter } from '@/lib/photo-filters';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { useMediaQuery } from '@/hooks/use-media-query';
+import { useObjectUrl } from '@/hooks/use-object-url';
 import { ChoiceChip } from '@/components/app/common';
 import { ME } from '@/components/app/nav-config';
 import HomeFeed from './HomeFeed';
@@ -17,40 +19,42 @@ import iconCamera from '@/assets/figma/shell/icon-camera-24.svg';
 
 /*
  * 12 · Create post — Figma 1488:2291 (1440 modal over Home) / 1488:2486 (768) / 1488:2563 (390 full screen)
+ * Picking a photo (or "Edit" on the preview) opens the media editor (23 · 1493:3544 / 1493:3658);
+ * the editor returns here with the edited media + the unsent draft in router state.
  */
 
 const PETS = ['Mikel', 'Oscar', 'Eva', 'Bruno'];
 
-function useObjectUrl(file) {
-  const [url, setUrl] = useState(null);
-  useEffect(() => {
-    if (!file) return undefined;
-    const u = URL.createObjectURL(file);
-    setUrl(u);
-    return () => URL.revokeObjectURL(u);
-  }, [file]);
-  return file ? url : null;
-}
-
 function Composer({ onDone, Close }) {
-  const [text, setText] = useState('');
-  const [tagged, setTagged] = useState(['Mikel']);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const [text, setText] = useState(state?.draft?.text ?? '');
+  const [tagged, setTagged] = useState(state?.draft?.tagged ?? ['Mikel']);
   const [showAllPets, setShowAllPets] = useState(false);
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(state?.file ?? null);
   const [removedSample, setRemovedSample] = useState(false);
   const photosRef = useRef(null);
   const cameraRef = useRef(null);
   const fileUrl = useObjectUrl(file);
-  const media = fileUrl || (removedSample ? null : samplePhoto);
+  const media = fileUrl || (removedSample ? null : state?.src || samplePhoto);
+  const isVideo = file?.type.startsWith('video/');
+  const mediaFilter = state?.filterId && !isVideo ? photoFilter(state.filterId, state.intensity) : undefined;
 
   const toggle = (pet) => setTagged((t) => (t.includes(pet) ? t.filter((p) => p !== pet) : [...t, pet]));
   const visiblePets = showAllPets ? PETS : PETS.slice(0, 2);
   const canPost = text.trim().length > 0 || Boolean(media);
 
+  const draft = { text, tagged };
+  const openEditor = (media) =>
+    navigate('/create/edit', { state: { ...media, from: 'post', draft } });
+
   const pick = (e) => {
     const f = e.target.files?.[0];
-    if (f) setFile(f);
     e.target.value = '';
+    if (!f) return;
+    // Photos go straight to the editor; videos are attached as-is.
+    if (f.type.startsWith('image/')) openEditor({ file: f });
+    else setFile(f);
   };
 
   return (
@@ -75,7 +79,27 @@ function Composer({ onDone, Close }) {
 
       {media && (
         <div className="relative h-[300px] shrink-0 overflow-hidden rounded-2xl">
-          <img src={media} alt="" className="size-full object-cover" />
+          {isVideo ? (
+            <video src={media} className="size-full object-cover" muted playsInline controls />
+          ) : (
+            <img src={media} alt="" className="size-full object-cover" style={{ filter: mediaFilter }} />
+          )}
+          {!isVideo && (
+            <button
+              type="button"
+              onClick={() =>
+                openEditor(
+                  file
+                    ? { file, filterId: state?.filterId, intensity: state?.intensity }
+                    : { src: media, filterId: state?.filterId, intensity: state?.intensity }
+                )
+              }
+              className="absolute top-3 left-3 flex h-10 items-center gap-1.5 rounded-full border border-white/30 bg-white/20 px-4 text-sm font-semibold text-white backdrop-blur-md"
+            >
+              <SlidersHorizontal className="size-4" />
+              Edit
+            </button>
+          )}
           <button
             type="button"
             aria-label="Remove photo"

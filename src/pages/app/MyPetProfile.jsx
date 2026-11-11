@@ -25,7 +25,7 @@ function Tag({ children }) {
 
 function MomentsGrid({ pet }) {
   return (
-    <div className="grid grid-cols-3 gap-1.5 md:gap-3 xl:grid-cols-4">
+    <div className="grid grid-cols-3 gap-1.5 md:gap-3 main-xl:grid-cols-4">
       {pet.moments.map((src, i) => (
         <div key={i} className="aspect-square overflow-hidden rounded-[10px] md:rounded-[14px]">
           <img src={src} alt="" loading="lazy" className="size-full object-cover" />
@@ -170,8 +170,8 @@ export default function MyPetProfile() {
       </div>
 
       {/* ---------- Tablet / desktop ---------- */}
-      <div className="mx-auto hidden w-full max-w-[1200px] px-6 pt-10 pb-12 md:block xl:px-12">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-11">
+      <div className="mx-auto hidden w-full max-w-[1200px] px-6 pt-10 pb-12 md:block main-xl:px-12">
+        <div className="flex flex-col gap-8 main-lg:flex-row main-lg:items-center main-lg:gap-11">
           <img
             src={pet.photo}
             alt={pet.name}

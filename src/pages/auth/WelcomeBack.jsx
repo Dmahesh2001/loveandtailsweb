@@ -38,7 +38,7 @@ export default function WelcomeBack() {
             @riamadrid · Oscar, Eva &amp; Bruno missed you
           </p>
           <div className="h-2.5" />
-          <Button size="pill-lg" className="w-full" onClick={() => navigate('/home')}>
+          <Button size="pill-lg" className="w-full" onClick={() => navigate('/splash')}>
             Continue as Ria
           </Button>
           <Button
