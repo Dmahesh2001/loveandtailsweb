@@ -276,7 +276,7 @@ export default function Messages() {
       <ConversationList
         activeId={active?.id}
         className={cn(
-          'w-full overflow-y-auto border-border md:w-[300px] md:shrink-0 md:border-r xl:w-[380px]',
+          'w-full overflow-y-auto border-border md:w-[300px] md:shrink-0 md:border-r main-xl:w-[380px]',
           conversationId && 'hidden md:flex'
         )}
       />

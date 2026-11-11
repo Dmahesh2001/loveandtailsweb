@@ -31,18 +31,18 @@ export default function Adopt() {
   }, [filter, query]);
 
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-4 pt-5 pb-8 md:px-6 md:pt-8 xl:px-12">
-      <header className="flex flex-col gap-4 md:gap-5 xl:flex-row xl:items-center">
+    <div className="mx-auto w-full max-w-[1200px] px-4 pt-5 pb-8 md:px-6 md:pt-8 main-xl:px-12">
+      <header className="flex flex-col gap-4 md:gap-5 main-xl:flex-row main-xl:items-center">
         <div className="min-w-0 flex-1">
           <h1 className="text-[22px] font-semibold text-ink md:text-[28px]">Find your forever friend</h1>
-          <p className="mt-1 hidden text-[15px] text-subtle xl:block">
+          <p className="mt-1 hidden text-[15px] text-subtle main-xl:block">
             128 pets near Hyderabad are looking for a home
           </p>
         </div>
         <div className="flex items-center gap-4">
           <SearchField
             placeholder="Search breed, name or area"
-            className="flex-1 xl:w-[320px] xl:flex-none"
+            className="flex-1 main-xl:w-[320px] main-xl:flex-none"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -63,7 +63,7 @@ export default function Adopt() {
         className="-mx-4 mt-4 px-4 md:mx-0 md:mt-5 md:px-0 [&::-webkit-scrollbar]:hidden"
       />
 
-      <div className="mt-4 grid grid-cols-2 gap-x-3 gap-y-6 md:mt-5 md:grid-cols-3 md:gap-x-4 md:gap-y-7 xl:grid-cols-4">
+      <div className="mt-4 grid grid-cols-2 gap-x-3 gap-y-6 md:mt-5 md:grid-cols-3 md:gap-x-4 md:gap-y-7 main-xl:grid-cols-4">
         {pets.map((pet) => (
           <PetCard
             key={pet.id}

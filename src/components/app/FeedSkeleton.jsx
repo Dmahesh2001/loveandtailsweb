@@ -27,7 +27,7 @@ export default function FeedSkeleton() {
         <PostBone />
         <PostBone />
       </div>
-      <aside className="hidden w-[300px] shrink-0 flex-col gap-5 xl:flex">
+      <aside className="hidden w-[300px] shrink-0 flex-col gap-5 main-xl:flex">
         <Bone className="h-5 rounded-md" />
         {[0, 1, 2].map((i) => (
           <div key={i} className="flex items-center gap-3">

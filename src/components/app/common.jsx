@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import ShareDialog from './ShareDialog';
 import iconSearch from '@/assets/figma/shell/icon-search.svg';
+import iconClear from '@/assets/figma/shell/icon-close-white-12.svg';
 import iconHeart from '@/assets/figma/shell/icon-heart.svg';
 import iconHeart18 from '@/assets/figma/shell/icon-heart-18.svg';
 import iconComment from '@/assets/figma/shell/icon-comment.svg';
@@ -14,8 +15,13 @@ import defaultPostPhoto from '@/assets/figma/shell/post-photo.png';
 import defaultPetPhoto from '@/assets/figma/pets/max.jpg';
 import defaultPetCardPhoto from '@/assets/figma/pets/ben.jpg';
 
-/* Search Field (Figma 1450:6146) — pill search used for every search bar. */
-export function SearchField({ placeholder = 'Search', className, inputClassName, ...props }) {
+/*
+ * Search Field (Figma 1450:6146) — pill search used for every search bar.
+ * State=Filled (1450:6139): pass `onClear` to show the grey (×) clear button
+ * whenever the field has a value.
+ */
+export function SearchField({ placeholder = 'Search', className, inputClassName, onClear, ...props }) {
+  const showClear = onClear && props.value;
   return (
     <label
       className={cn(
@@ -28,11 +34,21 @@ export function SearchField({ placeholder = 'Search', className, inputClassName,
         type="search"
         placeholder={placeholder}
         className={cn(
-          'min-w-0 flex-1 bg-transparent text-base leading-[22px] text-ink outline-none placeholder:text-muted-foreground',
+          'min-w-0 flex-1 bg-transparent text-base leading-[22px] text-ink outline-none placeholder:text-muted-foreground [&::-webkit-search-cancel-button]:hidden',
           inputClassName
         )}
         {...props}
       />
+      {showClear && (
+        <button
+          type="button"
+          aria-label="Clear search"
+          onClick={onClear}
+          className="flex size-5 shrink-0 items-center justify-center rounded-[10px] bg-[#9ca3af] hover:bg-[#868c97]"
+        >
+          <img src={iconClear} alt="" width={12} height={12} />
+        </button>
+      )}
     </label>
   );
 }
@@ -46,6 +62,22 @@ export function Chip({ selected, className, children, ...props }) {
       className={cn(
         'inline-flex h-8 shrink-0 items-center justify-center rounded-full px-3.5 text-sm leading-5 font-medium whitespace-nowrap transition-colors',
         selected ? 'bg-brand text-white' : 'bg-[#f6f6f6] text-[#4a546b] hover:bg-[#ececec]',
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
+
+/* Chip — style=Tag (Figma 1279:38): small grey label; clickable when given onClick. */
+export function TagChip({ className, children, ...props }) {
+  return (
+    <button
+      type="button"
+      className={cn(
+        'inline-flex shrink-0 items-center rounded-full bg-muted px-4 py-2 text-xs leading-4 whitespace-nowrap text-[#4a546c] transition-colors hover:bg-[#e6e6e6]',
         className
       )}
       {...props}

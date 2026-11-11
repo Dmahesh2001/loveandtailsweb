@@ -154,7 +154,7 @@ function Info({ pet }) {
         ))}
       </ul>
 
-      <div className="flex flex-col gap-[18px] xl:hidden">
+      <div className="flex flex-col gap-[18px] main-xl:hidden">
         <SectionTitle>Looking for</SectionTitle>
         <div className="flex flex-wrap gap-2">
           {pet.lookingFor.map((t) => (
@@ -175,7 +175,7 @@ export default function PetDetails() {
   if (!pet) return <NotFound />;
 
   return (
-    <div className="mx-auto w-full max-w-[1120px] px-4 pt-4 pb-28 md:px-6 md:pt-7 md:pb-12 xl:px-12">
+    <div className="mx-auto w-full max-w-[1120px] px-4 pt-4 pb-28 md:px-6 md:pt-7 md:pb-12 main-xl:px-12">
       <div className="mb-4 flex items-center gap-4 md:mb-6">
         <button
           type="button"
@@ -194,14 +194,14 @@ export default function PetDetails() {
         </nav>
       </div>
 
-      <div className="flex flex-col gap-8 xl:flex-row">
-        <div className="flex w-full flex-col gap-8 xl:w-[560px] xl:shrink-0">
+      <div className="flex flex-col gap-8 main-xl:flex-row">
+        <div className="flex w-full flex-col gap-8 main-xl:w-[560px] main-xl:shrink-0">
           <Gallery pet={pet} saved={saved} onToggleSave={() => setSaved((s) => !s)} />
-          <AdoptCard pet={pet} className="hidden xl:flex" />
+          <AdoptCard pet={pet} className="hidden main-xl:flex" />
         </div>
-        <div className="min-w-0 flex-1 xl:max-w-[480px]">
+        <div className="min-w-0 flex-1 main-xl:max-w-[480px]">
           <Info pet={pet} />
-          <AdoptCard pet={pet} className="mt-8 hidden md:flex xl:hidden" />
+          <AdoptCard pet={pet} className="mt-8 hidden md:flex main-xl:hidden" />
           <div className="mt-8 md:hidden">
             <AdoptCard pet={pet} />
           </div>

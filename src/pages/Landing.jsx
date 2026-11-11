@@ -17,7 +17,7 @@ import featurePack from '@/assets/figma/pets/eva.jpg';
  */
 
 const FEATURES = [
-  { title: 'Share the everyday', text: 'Post photos and reels of your pets and follow the ones you love.', photo: featureSwim },
+  { title: 'Share the everyday', text: 'Post photos and moments of your pets and follow the ones you love.', photo: featureSwim },
   { title: 'Adopt with confidence', text: 'Verified profiles, document checks and live-photo KYC on every listing.', photo: featureAdopt },
   { title: 'Find your local pack', text: 'Meet-ups, walks and events with pet lovers near you.', photo: featurePack },
 ];
@@ -25,7 +25,7 @@ const FEATURES = [
 const SLIDES = [
   {
     title: 'Share every pawsome moment',
-    text: 'Post photos and reels of your pet and follow the pets you love.',
+    text: 'Post photos and moments of your pet and follow the pets you love.',
     photo: heroFetch,
     badge: { title: 'Oscar learned a new trick!', meta: '@oscar.the.golden · 2m' },
   },

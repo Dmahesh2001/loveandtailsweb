@@ -105,7 +105,7 @@ function PostsGrid() {
       {tab === 'Saved' ? (
         <p className="py-12 text-center text-[15px] text-subtle">Posts you save will show up here.</p>
       ) : (
-        <div className="grid grid-cols-3 gap-1.5 md:gap-3 xl:grid-cols-4">
+        <div className="grid grid-cols-3 gap-1.5 md:gap-3 main-xl:grid-cols-4">
           {MY_POSTS.map((src, i) => (
             <div key={i} className="aspect-[267/294] overflow-hidden rounded-lg md:rounded-xl">
               <img src={src} alt="" loading="lazy" className="size-full object-cover" />
@@ -170,9 +170,9 @@ export default function Profile() {
       </div>
 
       {/* ---------- Tablet / desktop ---------- */}
-      <div className="mx-auto hidden w-full max-w-[1200px] px-6 pt-6 pb-12 md:block xl:px-12">
+      <div className="mx-auto hidden w-full max-w-[1200px] px-6 pt-6 pb-12 md:block main-xl:px-12">
         <div className="relative">
-          <div className="h-[180px] overflow-hidden rounded-3xl xl:h-[220px]">
+          <div className="h-[180px] overflow-hidden rounded-3xl main-xl:h-[220px]">
             <img src={cover} alt="" className="size-full object-cover" />
           </div>
           <img
@@ -180,7 +180,7 @@ export default function Profile() {
             alt={ME.name}
             width={128}
             height={128}
-            className="absolute -bottom-16 left-10 size-28 rounded-full xl:size-32"
+            className="absolute -bottom-16 left-10 size-28 rounded-full main-xl:size-32"
           />
         </div>
 
@@ -188,7 +188,7 @@ export default function Profile() {
           <Actions />
         </div>
 
-        <div className="mt-6 flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
+        <div className="mt-6 flex flex-col gap-6 main-xl:flex-row main-xl:items-start main-xl:justify-between">
           <div className="flex max-w-[520px] flex-col gap-2 pl-10">
             <h1 className="text-[30px] font-semibold text-ink">{ME.name}</h1>
             <p className="text-sm text-subtle">
@@ -198,7 +198,7 @@ export default function Profile() {
             <Badges />
             <Stats className="mt-5" />
           </div>
-          <MyPets className="xl:w-[380px]" />
+          <MyPets className="main-xl:w-[380px]" />
         </div>
 
         <div className="mt-10">

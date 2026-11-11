@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, NavLink, useMatch, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import {
@@ -12,17 +13,29 @@ import { ME, MORE_ICON, MORE_ICON_ACTIVE, SIDEBAR_NAV } from './nav-config';
 
 /*
  * Web / Sidebar (Figma 1475:152) — Instagram-style.
- * Expanded (248px) on laptop (xl+), Collapsed (80px) on tablet (md–xl).
- * Active page: bold label (and the filled home icon for Home).
+ * Collapsed by default (80px, icons + tooltips). Hovering (or focusing) the
+ * logo expands it to 248px with labels, overlaying the page; it collapses again
+ * once the pointer leaves the panel.
+ * Active page: filled icon + bold label (the Profile avatar gets a ring).
  */
-const itemBase =
-  'relative flex h-12 items-center rounded-xl text-base text-ink transition-colors hover:bg-black/[0.04] ' +
-  'justify-center w-12 xl:w-full xl:justify-start xl:gap-4 xl:px-3';
+function itemClass(expanded) {
+  return cn(
+    'relative flex h-12 items-center rounded-xl text-base text-ink transition-colors hover:bg-black/[0.04]',
+    expanded ? 'w-full justify-start gap-4 px-3' : 'w-12 justify-center'
+  );
+}
 
 function NavIcon({ item, active }) {
-  if (item.avatar && !(active && item.activeIcon)) {
+  if (item.avatar) {
     return (
-      <img src={ME.avatar} alt="" className="size-[26px] shrink-0 rounded-xl object-cover" />
+      <img
+        src={ME.avatar}
+        alt=""
+        className={cn(
+          'size-[26px] shrink-0 rounded-xl object-cover',
+          active && 'ring-2 ring-brand ring-offset-1 ring-offset-white'
+        )}
+      />
     );
   }
   return (
@@ -36,74 +49,98 @@ function NavIcon({ item, active }) {
   );
 }
 
-function SidebarItem({ item }) {
+function SidebarItem({ item, expanded }) {
   // Resolve active state up-front: Radix Slot (TooltipTrigger asChild) can't
   // merge NavLink's function-style className.
   const onPage = Boolean(useMatch({ path: item.to, end: false }));
   // Sub-pages that belong to this item's section (e.g. /pets/* under Profile,
-  // /applications under Adopt) show it active. The Profile item keeps the
-  // avatar there (Figma 08 · My pet's profile).
+  // /applications under Adopt) show it active.
   const inSection = Boolean(useMatch({ path: item.section || item.to, end: false }));
   const isActive = onPage || inSection;
 
+  const link = (
+    <NavLink
+      to={item.to}
+      aria-label={expanded ? undefined : item.label}
+      className={cn(itemClass(expanded), isActive ? 'font-semibold' : 'font-normal')}
+    >
+      <NavIcon item={item} active={isActive} />
+      {expanded && <span className="flex-1">{item.label}</span>}
+      {item.badge ? (
+        expanded ? (
+          <span className="rounded-full bg-brand px-[7px] py-0.5 text-[11px] font-semibold text-white">
+            {item.badge}
+          </span>
+        ) : (
+          <span className="absolute top-[11px] right-[10px] size-1.5 rounded-full bg-brand ring-2 ring-white" />
+        )
+      ) : null}
+    </NavLink>
+  );
+
+  if (expanded) return link;
   return (
     <Tooltip>
-      <TooltipTrigger asChild>
-        <NavLink
-          to={item.to}
-          className={cn(itemBase, isActive ? 'font-semibold' : 'font-normal')}
-        >
-          <NavIcon item={item} active={item.avatar ? onPage : isActive} />
-          <span className="hidden flex-1 xl:block">{item.label}</span>
-          {item.badge ? (
-            <>
-              {/* Expanded: count pill */}
-              <span className="hidden rounded-full bg-brand px-[7px] py-0.5 text-[11px] font-semibold text-white xl:inline">
-                {item.badge}
-              </span>
-              {/* Collapsed: dot */}
-              <span className="absolute top-[11px] right-[10px] size-1.5 rounded-full bg-brand ring-2 ring-white xl:hidden" />
-            </>
-          ) : null}
-        </NavLink>
-      </TooltipTrigger>
-      <TooltipContent side="right" className="xl:hidden">
-        {item.label}
-      </TooltipContent>
+      <TooltipTrigger asChild>{link}</TooltipTrigger>
+      <TooltipContent side="right">{item.label}</TooltipContent>
     </Tooltip>
   );
 }
 
-export default function Sidebar({ className }) {
+export default function Sidebar({ className, ...props }) {
   const navigate = useNavigate();
+  const [hovered, setHovered] = useState(false);
+  // Keep it open while the More menu (portalled outside the aside) is open.
+  const [menuOpen, setMenuOpen] = useState(false);
+  const expanded = hovered || menuOpen;
   // Settings lives under "More" (Figma 19 · Settings shows More as active).
   const moreActive = Boolean(useMatch({ path: '/settings', end: false }));
 
   return (
     <aside
+      {...props}
+      onMouseLeave={() => setHovered(false)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) setHovered(false);
+      }}
       className={cn(
-        'flex h-svh flex-col items-center gap-1.5 border-r border-line bg-white px-3 pt-8 pb-6',
-        'w-20 xl:w-[248px] xl:items-start xl:px-4',
+        'flex h-svh flex-col gap-1.5 overflow-hidden border-r border-line bg-white pt-8 pb-6',
+        'transition-[width,box-shadow] duration-200 ease-out motion-reduce:transition-none',
+        expanded ? 'w-[248px] items-start px-4 shadow-xl' : 'w-20 items-center px-3',
         className
       )}
     >
-      <Link to="/home" className="font-brand text-xl leading-normal text-brand xl:text-[28px]">
-        <span className="xl:hidden">L&amp;T</span>
-        <span className="hidden xl:inline">Love&amp;Tails</span>
-      </Link>
-      <div className="h-7 shrink-0" />
+      <div className={cn('flex w-full items-center', expanded ? 'pl-3' : 'justify-center')}>
+        <Link
+          to="/home"
+          onMouseEnter={() => setHovered(true)}
+          onFocus={() => setHovered(true)}
+          className={cn(
+            'font-brand leading-normal whitespace-nowrap text-brand',
+            expanded ? 'text-[28px]' : 'text-xl'
+          )}
+        >
+          {expanded ? 'Love&Tails' : 'L&T'}
+        </Link>
+      </div>
+      {/* Equal flexible spacers above and below keep the nav vertically centred. */}
+      <div className="min-h-4 flex-1" />
 
-      <nav className="flex w-full flex-col items-center gap-1.5 xl:items-stretch">
+      <nav className={cn('flex w-full flex-col gap-1.5', expanded ? 'items-stretch' : 'items-center')}>
         {SIDEBAR_NAV.map((item) => (
-          <SidebarItem key={item.to} item={item} />
+          <SidebarItem key={item.to} item={item} expanded={expanded} />
         ))}
       </nav>
 
-      <div className="flex-1" />
+      <div className="min-h-4 flex-1" />
 
-      <DropdownMenu>
+      <DropdownMenu open={menuOpen} onOpenChange={setMenuOpen}>
         <DropdownMenuTrigger asChild>
-          <button type="button" className={cn(itemBase, 'outline-none', moreActive && 'font-semibold')}>
+          <button
+            type="button"
+            aria-label={expanded ? undefined : 'More'}
+            className={cn(itemClass(expanded), 'outline-none', moreActive && 'font-semibold')}
+          >
             <img
               src={moreActive ? MORE_ICON_ACTIVE : MORE_ICON}
               alt=""
@@ -111,7 +148,7 @@ export default function Sidebar({ className }) {
               height={26}
               className="size-[26px] shrink-0"
             />
-            <span className="hidden flex-1 text-left xl:block">More</span>
+            {expanded && <span className="flex-1 text-left">More</span>}
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent side="top" align="start" className="w-56">
