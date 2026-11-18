@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import AppShell from './components/app/AppShell';
 import NotFound from './pages/NotFound';
 import Splash, { SplashScreen } from './pages/Splash';
@@ -131,6 +132,7 @@ export default function App() {
       <Suspense fallback={<SplashScreen />}>
         <RouterProvider router={router} />
       </Suspense>
+      <Analytics />
     </AuthProvider>
   );
 }
