@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { useAuth } from '@/lib/auth';
 import { ME, MORE_ICON, MORE_ICON_ACTIVE, SIDEBAR_NAV } from './nav-config';
 
 /*
@@ -89,6 +90,7 @@ function SidebarItem({ item, expanded }) {
 
 export default function Sidebar({ className, ...props }) {
   const navigate = useNavigate();
+  const { logout } = useAuth();
   const [hovered, setHovered] = useState(false);
   // Keep it open while the More menu (portalled outside the aside) is open.
   const [menuOpen, setMenuOpen] = useState(false);
@@ -163,7 +165,13 @@ export default function Sidebar({ className, ...props }) {
             Switch accounts
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onSelect={() => navigate('/login')} className="text-brand">
+          <DropdownMenuItem
+            onSelect={async () => {
+              await logout();
+              navigate('/login', { replace: true });
+            }}
+            className="text-brand"
+          >
             Log out
           </DropdownMenuItem>
         </DropdownMenuContent>

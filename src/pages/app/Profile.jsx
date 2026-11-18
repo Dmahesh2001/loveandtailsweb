@@ -4,7 +4,7 @@ import { Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ChipTabs } from '@/components/app/common';
-import { ME } from '@/components/app/nav-config';
+import { useCurrentUser } from '@/lib/auth';
 import { MY_BIO, MY_PETS, MY_POSTS, MY_STATS } from '@/data/me';
 import cover from '@/assets/figma/shell/post-photo.png';
 import avatar from '@/assets/figma/profile/avatar-ria.png';
@@ -118,6 +118,7 @@ function PostsGrid() {
 }
 
 function MobileHero() {
+  const ME = useCurrentUser();
   const navigate = useNavigate();
   return (
     <div className="relative h-[440px] md:hidden">
@@ -144,7 +145,7 @@ function MobileHero() {
       <div className="absolute bottom-16 left-5 text-white">
         <h1 className="text-[30px] font-semibold">{ME.name}</h1>
         <p className="text-sm text-white/85">
-          {ME.handle} · {ME.location}
+          {[ME.handle, ME.location].filter(Boolean).join(" · ")}
         </p>
       </div>
     </div>
@@ -152,6 +153,7 @@ function MobileHero() {
 }
 
 export default function Profile() {
+  const ME = useCurrentUser();
   return (
     <>
       {/* ---------- Mobile ---------- */}
@@ -192,7 +194,7 @@ export default function Profile() {
           <div className="flex max-w-[520px] flex-col gap-2 pl-10">
             <h1 className="text-[30px] font-semibold text-ink">{ME.name}</h1>
             <p className="text-sm text-subtle">
-              {ME.handle} · {ME.location}
+              {[ME.handle, ME.location].filter(Boolean).join(" · ")}
             </p>
             <p className="text-[15px] text-ink">{MY_BIO}</p>
             <Badges />

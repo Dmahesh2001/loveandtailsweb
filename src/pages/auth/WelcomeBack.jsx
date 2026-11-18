@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth, useCurrentUser } from '@/lib/auth';
 import { Button } from '@/components/ui/button';
 import photo from '@/assets/figma/auth/welcome-photo.jpg';
 import avatar from '@/assets/figma/auth/welcome-avatar.png';
@@ -10,6 +11,13 @@ import avatar from '@/assets/figma/auth/welcome-avatar.png';
  */
 export default function WelcomeBack() {
   const navigate = useNavigate();
+  const { status, lastUser, logout } = useAuth();
+  const me = useCurrentUser();
+  // Signed in: greet the current user. Otherwise greet whoever last signed in
+  // on this device and send them to log in.
+  const signedIn = status === 'authenticated';
+  const firstName = signedIn ? me.firstName : lastUser?.first_name || lastUser?.email?.split('@')[0];
+  const subtitle = signedIn ? `${me.handle} · Your pets missed you` : lastUser?.email ?? 'Your pets missed you';
 
   return (
     <div className="relative flex min-h-svh flex-col bg-white lg:flex-row">
@@ -28,24 +36,27 @@ export default function WelcomeBack() {
         <div className="flex w-full max-w-[400px] flex-col items-center gap-3.5 text-center">
           <img
             src={avatar}
-            alt="Ria"
+            alt=""
             width={96}
             height={96}
             className="size-24 rounded-full border-4 border-white object-cover lg:border-0"
           />
-          <h1 className="text-[28px] font-semibold text-white md:text-[32px] md:text-ink">Welcome back, Ria</h1>
+          <h1 className="text-[28px] font-semibold text-white md:text-[32px] md:text-ink">{firstName ? `Welcome back, ${firstName}` : 'Welcome back'}</h1>
           <p className="text-[15px] text-white/80 md:text-subtle">
-            @riamadrid · Oscar, Eva &amp; Bruno missed you
+            {subtitle}
           </p>
           <div className="h-2.5" />
-          <Button size="pill-lg" className="w-full" onClick={() => navigate('/splash')}>
-            Continue as Ria
+          <Button size="pill-lg" className="w-full" onClick={() => navigate(signedIn ? '/splash' : '/login')}>
+            {firstName ? `Continue as ${firstName}` : 'Continue'}
           </Button>
           <Button
             variant="ghost"
             size="pill-lg"
             className="w-full text-white hover:bg-white/10 hover:text-white md:text-ink md:hover:bg-accent md:hover:text-ink"
-            onClick={() => navigate('/login')}
+            onClick={async () => {
+              if (signedIn) await logout();
+              navigate('/login');
+            }}
           >
             Switch account
           </Button>

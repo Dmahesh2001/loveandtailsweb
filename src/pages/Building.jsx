@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import InputField from '../components/InputField';
 import PrimaryButton from '../components/PrimaryButton';
 import Toast from '../components/Toast';
+import { api } from '../lib/api';
 import './Building.css';
 
 const STORY_LINES = [
@@ -21,27 +22,33 @@ const Building = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
     if (error) setError('');
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!EMAIL_PATTERN.test(email)) {
+    if (!EMAIL_PATTERN.test(email.trim())) {
       setError('Please enter a valid email address.');
       return;
     }
 
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    try {
+      const result = await api.joinWaitlist(email.trim());
+      setMessage(result.detail);
       setSubmitted(true);
       setShowToast(true);
       setTimeout(() => setShowToast(false), 3000);
-    }, 1200);
+    } catch (err) {
+      setError(err.fieldErrors?.email || err.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -90,7 +97,7 @@ const Building = () => {
                 className={`building-band__success${submitted ? '' : ' is-hidden'}`}
                 aria-hidden={!submitted}
               >
-                You're on the list! We'll be in touch soon.
+                {message || "You're on the list! We'll be in touch soon."}
               </p>
               <form
                 className={`building-band__form${submitted ? ' is-hidden' : ''}`}
@@ -122,7 +129,7 @@ const Building = () => {
           </div>
         </motion.section>
       </div>
-      <Toast show={showToast} message="Email sent! You're on the list." />
+      <Toast show={showToast} message={message || "You're on the list!"} />
     </div>
   );
 };

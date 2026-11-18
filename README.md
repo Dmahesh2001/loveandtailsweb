@@ -55,4 +55,21 @@ Breakpoints follow the Figma frames: **390** mobile (mobile header + bottom tab 
 | `/search` | (no Figma frame — composed from the design system) |
 | `/coming-soon` | the original pre-launch page |
 
-Data is mocked; there is no backend yet.
+## Backend
+
+Auth, the signed-in user's profile and the waitlist use [LTBackend](../../backend/LTBackend) (Django REST API). Everything else (feed, pets, moments, messages, adoption) is still mocked in `src/data/`.
+
+| Web | API |
+| --- | --- |
+| Sign up (`/signup`) | `POST /auth/register/`, then log in |
+| Log in (`/login`) | `POST /auth/token/` |
+| Log out (sidebar, settings) | `POST /auth/logout/` (blacklists the refresh token) |
+| Session restore, names across the app | `GET /users/me/` |
+| Edit profile (`/settings/profile`) | `PATCH /users/me/` (first name, last name, phone) |
+| Join the waitlist (`/coming-soon`) | `POST /waitlist/` |
+
+Signed-in routes (the app shell, onboarding, KYC, editor) redirect to `/login` without a session and come back afterwards. Access tokens refresh automatically on a `401`.
+
+The API URL comes from `VITE_API_URL`. Without it, dev uses `http://localhost:8000/api/v1` and production builds use `https://api.loveandtails.com/api/v1`. To point elsewhere, copy `.env.example` to `.env.local`. The backend must list the web origin in `CORS_ALLOWED_ORIGINS` (it allows `http://localhost:3000` by default), so add the Vercel domain to it in production.
+
+Vercel deploys use [vercel.json](vercel.json): Vite preset, output in `dist`, and a rewrite to `index.html` so client-side routes work on refresh.

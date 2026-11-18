@@ -4,6 +4,7 @@ import AppShell from './components/app/AppShell';
 import NotFound from './pages/NotFound';
 import Splash, { SplashScreen } from './pages/Splash';
 import FeedSkeleton from './components/app/FeedSkeleton';
+import { AuthProvider, RequireAuth } from './lib/auth';
 
 const ComingSoon = lazy(() => import('./pages/ComingSoon'));
 const HomeFeed = lazy(() => import('./pages/app/HomeFeed'));
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   { path: '/login', element: <Login /> },
   { path: '/signup', element: <SignUp /> },
   { path: '/welcome-back', element: <WelcomeBack /> },
+  {
+    // Everything below needs a signed-in user (JWT from LTBackend).
+    element: <RequireAuth />,
+    children: [
   { path: '/onboarding', element: <Navigate to="/onboarding/1" replace /> },
   { path: '/onboarding/:step', element: <Onboarding /> },
   { path: '/personalize', element: <Navigate to="/onboarding/4" replace /> },
@@ -99,6 +104,8 @@ const router = createBrowserRouter([
       },
     ],
   },
+    ],
+  },
   { path: '*', element: <NotFound /> },
 ]);
 
@@ -106,8 +113,10 @@ export default function App() {
   // Top-level routes load lazily; the Figma Splash (1495:13209) covers the wait.
   // Pages inside the app shell use the Loading skeleton instead (see AppShell).
   return (
-    <Suspense fallback={<SplashScreen />}>
-      <RouterProvider router={router} />
-    </Suspense>
+    <AuthProvider>
+      <Suspense fallback={<SplashScreen />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </AuthProvider>
   );
 }
