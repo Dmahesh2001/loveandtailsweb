@@ -34,6 +34,8 @@ const SLIDES = [
   { title: 'Where pets find their people', text: 'Join 50k+ pet parents adopting, sharing and meeting up near you.', photo: heroCat },
 ];
 
+// Hidden for now (not rendered): social-proof numbers to bring back after launch.
+// eslint-disable-next-line no-unused-vars
 const STATS = [
   ['50k+', 'pet parents'],
   ['3.2k', 'verified adoptions'],
@@ -166,14 +168,6 @@ export default function Landing() {
               <Button asChild variant="outline-neutral" size="pill-lg" className="border-[#d1d1d1]">
                 <Link to="/adopt">Browse pets</Link>
               </Button>
-            </div>
-            <div className="flex gap-8 pt-3">
-              {STATS.map(([n, l]) => (
-                <div key={l}>
-                  <p className="text-[22px] font-semibold text-ink">{n}</p>
-                  <p className="text-[13px] text-subtle">{l}</p>
-                </div>
-              ))}
             </div>
           </div>
           <Collage />
