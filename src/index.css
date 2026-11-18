@@ -130,6 +130,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+/* "We're building" page: the clay puppy bobs gently. */
+@keyframes puppy-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
 /* Splash loading bar (Figma 1495:13211) */
 @keyframes splash {
   0% { transform: translateX(-100%); }

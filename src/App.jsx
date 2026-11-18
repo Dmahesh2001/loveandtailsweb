@@ -5,6 +5,15 @@ import NotFound from './pages/NotFound';
 import Splash, { SplashScreen } from './pages/Splash';
 import FeedSkeleton from './components/app/FeedSkeleton';
 import { AuthProvider, RequireAuth } from './lib/auth';
+import UnderConstruction from './pages/UnderConstruction';
+
+/*
+ * While true, every route shows the puppy "we're building" page.
+ * Set VITE_UNDER_CONSTRUCTION=false to open the app. Unset, it's on in
+ * production builds and off in dev (where /building previews the page).
+ */
+const UNDER_CONSTRUCTION =
+  (import.meta.env.VITE_UNDER_CONSTRUCTION ?? String(import.meta.env.PROD)) === 'true';
 
 const ComingSoon = lazy(() => import('./pages/ComingSoon'));
 const HomeFeed = lazy(() => import('./pages/app/HomeFeed'));
@@ -38,7 +47,8 @@ const Onboarding = lazy(() => import('./pages/onboarding/Onboarding'));
 const BadgeQuiz = lazy(() => import('./pages/onboarding/BadgeQuiz'));
 const KycVerification = lazy(() => import('./pages/onboarding/KycVerification'));
 
-const router = createBrowserRouter([
+const appRoutes = [
+  { path: '/building', element: <UnderConstruction /> },
   { path: '/', element: <Landing /> },
   { path: '/coming-soon', element: <ComingSoon /> },
   { path: '/login', element: <Login /> },
@@ -107,7 +117,11 @@ const router = createBrowserRouter([
     ],
   },
   { path: '*', element: <NotFound /> },
-]);
+];
+
+const router = createBrowserRouter(
+  UNDER_CONSTRUCTION ? [{ path: '*', element: <UnderConstruction /> }] : appRoutes
+);
 
 export default function App() {
   // Top-level routes load lazily; the Figma Splash (1495:13209) covers the wait.
