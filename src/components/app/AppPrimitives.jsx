@@ -3,17 +3,17 @@ import { Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import ShareDialog from './ShareDialog';
-import iconSearch from '@/assets/figma/shell/icon-search.svg';
-import iconClear from '@/assets/figma/shell/icon-close-white-12.svg';
-import iconHeart from '@/assets/figma/shell/icon-heart.svg';
-import iconHeart18 from '@/assets/figma/shell/icon-heart-18.svg';
-import iconComment from '@/assets/figma/shell/icon-comment.svg';
-import iconShare from '@/assets/figma/shell/icon-share-03.svg';
-import iconBookmark from '@/assets/figma/shell/icon-bookmark.svg';
-import defaultPostAvatar from '@/assets/figma/shell/avatar.png';
-import defaultPostPhoto from '@/assets/figma/shell/post-photo.png';
-import defaultPetPhoto from '@/assets/figma/pets/max.jpg';
-import defaultPetCardPhoto from '@/assets/figma/pets/ben.jpg';
+import iconSearch from '@/assets/icons/icon-search.svg';
+import iconClear from '@/assets/icons/icon-close-white-12.svg';
+import iconHeart from '@/assets/icons/icon-heart.svg';
+import iconHeart18 from '@/assets/icons/icon-heart-18.svg';
+import iconComment from '@/assets/icons/icon-comment.svg';
+import iconShare from '@/assets/icons/icon-share-03.svg';
+import iconBookmark from '@/assets/icons/icon-bookmark.svg';
+import defaultPostAvatar from '@/assets/images/shell/avatar.png';
+import defaultPostPhoto from '@/assets/images/shell/post-photo.png';
+import defaultPetPhoto from '@/assets/images/pets/max.jpg';
+import defaultPetCardPhoto from '@/assets/images/pets/ben.jpg';
 
 /*
  * Search Field (Figma 1450:6146) — pill search used for every search bar.

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { ChipTabs } from '@/components/app/common';
-import pawsRescue from '@/assets/figma/notifications/avatar-paws-rescue.png';
-import elena from '@/assets/figma/messages/avatar-elena.png';
-import marcus from '@/assets/figma/messages/avatar-marcus.png';
-import sarah from '@/assets/figma/messages/avatar-sarah.png';
+import { ChipTabs } from '@/components/app/AppPrimitives';
+import pawsRescue from '@/assets/images/notifications/avatar-paws-rescue.png';
+import elena from '@/assets/images/messages/avatar-elena.png';
+import marcus from '@/assets/images/messages/avatar-marcus.png';
+import sarah from '@/assets/images/messages/avatar-sarah.png';
 
 /* 10 · Notifications — Figma 1487:2492 (1440) / 1487:2608 (768) / 1487:2712 (390) */
 

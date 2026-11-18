@@ -1,15 +1,15 @@
-import golden from '@/assets/figma/moments/moment-golden.jpg';
-import puppy from '@/assets/figma/moments/moment-puppy.jpg';
-import audioDisc from '@/assets/figma/moments/audio-disc.jpg';
-import wade from '@/assets/figma/moments/avatar-wade.png';
-import julia from '@/assets/figma/moments/avatar-wade-40.png';
-import marcus from '@/assets/figma/messages/avatar-marcus.png';
-import sarah from '@/assets/figma/messages/avatar-sarah.png';
-import elena from '@/assets/figma/messages/avatar-elena.png';
-import bruno from '@/assets/figma/pets/bruno.jpg';
-import luna from '@/assets/figma/pets/luna.jpg';
-import fetch from '@/assets/figma/landing/hero-fetch.jpg';
-import swim from '@/assets/figma/landing/feature-swim.jpg';
+import golden from '@/assets/images/moments/moment-golden.jpg';
+import puppy from '@/assets/images/moments/moment-puppy.jpg';
+import audioDisc from '@/assets/images/moments/audio-disc.jpg';
+import wade from '@/assets/images/moments/avatar-wade.png';
+import julia from '@/assets/images/moments/avatar-wade-40.png';
+import marcus from '@/assets/images/messages/avatar-marcus.png';
+import sarah from '@/assets/images/messages/avatar-sarah.png';
+import elena from '@/assets/images/messages/avatar-elena.png';
+import bruno from '@/assets/images/pets/bruno.jpg';
+import luna from '@/assets/images/pets/luna.jpg';
+import fetch from '@/assets/images/landing/hero-fetch.jpg';
+import swim from '@/assets/images/landing/feature-swim.jpg';
 
 /*
  * Moments: short vertical posts (Figma "13 · Reels").

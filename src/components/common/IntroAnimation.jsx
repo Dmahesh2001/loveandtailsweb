@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { animate } from 'framer-motion';
-import logoColor from '../assets/logos/Love&Tails.svg';
-import logoWhite from '../assets/logos/Love&Tails_white.svg';
+import logoColor from '@/assets/logos/logo-color.svg';
+import logoWhite from '@/assets/logos/logo-white.svg';
 import './IntroAnimation.css';
 
 const EASE_IN_OUT_CUBIC = [0.65, 0, 0.35, 1];

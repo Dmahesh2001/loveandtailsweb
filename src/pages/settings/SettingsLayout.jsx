@@ -4,8 +4,8 @@ import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { useAuth, useCurrentUser } from '@/lib/auth';
 import { MY_PETS } from '@/data/me';
-import iconBack from '@/assets/figma/shell/icon-back.svg';
-import notificationsIcon from '@/assets/figma/shell/header-notifications.svg';
+import iconBack from '@/assets/icons/icon-back.svg';
+import notificationsIcon from '@/assets/icons/header-notifications.svg';
 import EditProfile from './EditProfile';
 
 /*

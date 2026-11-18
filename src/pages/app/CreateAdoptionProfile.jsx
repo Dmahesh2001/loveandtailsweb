@@ -4,14 +4,14 @@ import { Plus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { PetCard } from '@/components/app/common';
+import { PetCard } from '@/components/app/AppPrimitives';
 import SelectField from '@/components/app/SelectField';
 import { ProgressBar } from '@/components/onboarding/StepLayout';
-import oscar from '@/assets/figma/profile/pet-oscar.png';
-import eva from '@/assets/figma/profile/pet-eva.png';
-import bruno from '@/assets/figma/profile/pet-bruno.png';
-import max from '@/assets/figma/pets/max.jpg';
-import iconBack from '@/assets/figma/shell/icon-back.svg';
+import oscar from '@/assets/images/profile/pet-oscar.png';
+import eva from '@/assets/images/profile/pet-eva.png';
+import bruno from '@/assets/images/profile/pet-bruno.png';
+import max from '@/assets/images/pets/max.jpg';
+import iconBack from '@/assets/icons/icon-back.svg';
 
 /*
  * 17 · Create adoption profile — Figma 1491:2649 (1440) / 1491:2783 (768) / 1491:2889 (390)

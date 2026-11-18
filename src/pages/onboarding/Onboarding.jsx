@@ -2,9 +2,9 @@ import { useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Camera } from 'lucide-react';
 import StepLayout, { OptionCard } from '@/components/onboarding/StepLayout';
-import { ChoiceChip } from '@/components/app/common';
+import { ChoiceChip } from '@/components/app/AppPrimitives';
 import { Input } from '@/components/ui/input';
-import clayDog from '@/assets/figma/onboarding/clay-add-your-pet.png';
+import clayDog from '@/assets/images/onboarding/clay-add-your-pet.png';
 
 /*
  * Pet onboarding — 6 steps built on the step template (Figma 06 · Onboarding step).

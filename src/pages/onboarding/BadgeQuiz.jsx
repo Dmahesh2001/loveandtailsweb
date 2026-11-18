@@ -5,8 +5,8 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import FocusLayout from '@/components/onboarding/FocusLayout';
 import { ProgressBar } from '@/components/onboarding/StepLayout';
-import badge from '@/assets/figma/onboarding/badge-responsible-parent.png';
-import iconBack from '@/assets/figma/shell/icon-back.svg';
+import badge from '@/assets/images/onboarding/badge-responsible-parent.png';
+import iconBack from '@/assets/icons/icon-back.svg';
 
 /*
  * 16 · Badge quiz — Figma 1490:2871 (1440) / 1490:2904 (768) / 1490:2936 (390)

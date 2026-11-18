@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
-import iconClose from '@/assets/figma/shell/icon-close.svg';
+import iconClose from '@/assets/icons/icon-close.svg';
 
 /*
  * Centered modal on tablet/desktop (Figma "Upload modal" 1487:1798),

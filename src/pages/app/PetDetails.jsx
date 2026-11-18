@@ -4,12 +4,12 @@ import { Heart, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { getPet } from '@/data/pets';
-import NotFound from '@/pages/NotFound';
-import iconBack from '@/assets/figma/shell/icon-back.svg';
-import iconHeart24 from '@/assets/figma/shell/icon-heart-24.svg';
-import iconCheck from '@/assets/figma/shell/icon-check-green.svg';
-import iconAdoptWhite from '@/assets/figma/shell/icon-adopt-white.svg';
-import iconChat from '@/assets/figma/shell/icon-chat.svg';
+import NotFound from '@/pages/status/NotFound';
+import iconBack from '@/assets/icons/icon-back.svg';
+import iconHeart24 from '@/assets/icons/icon-heart-24.svg';
+import iconCheck from '@/assets/icons/icon-check-green.svg';
+import iconAdoptWhite from '@/assets/icons/icon-adopt-white.svg';
+import iconChat from '@/assets/icons/icon-chat.svg';
 
 /*
  * 07 · Pet details (adopt) — Figma 1482:1188 (1440) / 1482:1343 (768) / 1484:1351 (390)

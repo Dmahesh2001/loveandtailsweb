@@ -6,15 +6,15 @@ import { photoFilter } from '@/lib/photo-filters';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { useObjectUrl } from '@/hooks/use-object-url';
 import { Button } from '@/components/ui/button';
-import max from '@/assets/figma/pets/max.jpg';
-import editPhoto from '@/assets/figma/editor/edit-photo.jpg';
-import eva from '@/assets/figma/pets/eva.jpg';
-import bruno from '@/assets/figma/pets/bruno.jpg';
-import warm from '@/assets/figma/editor/filter-warm.png';
-import golden from '@/assets/figma/editor/filter-golden.png';
-import mono from '@/assets/figma/editor/filter-mono.png';
-import fade from '@/assets/figma/editor/filter-fade.png';
-import iconChevronLeft from '@/assets/figma/shell/icon-chevron-left.svg';
+import max from '@/assets/images/pets/max.jpg';
+import editPhoto from '@/assets/images/editor/edit-photo.jpg';
+import eva from '@/assets/images/pets/eva.jpg';
+import bruno from '@/assets/images/pets/bruno.jpg';
+import warm from '@/assets/images/editor/filter-warm.png';
+import golden from '@/assets/images/editor/filter-golden.png';
+import mono from '@/assets/images/editor/filter-mono.png';
+import fade from '@/assets/images/editor/filter-fade.png';
+import iconChevronLeft from '@/assets/icons/icon-chevron-left.svg';
 
 /*
  * Media editor — Figma 1493:3544 (1440 "New reel", shown as "New moment") / 1493:3615 (768) / 1493:3658 (390 "Edit photo")

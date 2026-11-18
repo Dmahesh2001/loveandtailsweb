@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import c1 from '@/assets/figma/pets/luna.jpg';
-import c2 from '@/assets/figma/pets/coco.jpg';
-import c3 from '@/assets/figma/pets/pip.jpg';
-import c4 from '@/assets/figma/auth/collage-4.jpg';
-import c5 from '@/assets/figma/pets/shadow.jpg';
-import c6 from '@/assets/figma/auth/collage-6.jpg';
+import c1 from '@/assets/images/pets/luna.jpg';
+import c2 from '@/assets/images/pets/coco.jpg';
+import c3 from '@/assets/images/pets/pip.jpg';
+import c4 from '@/assets/images/auth/collage-4.jpg';
+import c5 from '@/assets/images/pets/shadow.jpg';
+import c6 from '@/assets/images/auth/collage-6.jpg';
 
 /*
  * Photo collage used by Login (1477:383) and Sign up (1490:2516).

@@ -1,12 +1,12 @@
-import oscar from '@/assets/figma/profile/pet-oscar.png';
-import eva from '@/assets/figma/profile/pet-eva.png';
-import bruno from '@/assets/figma/profile/pet-bruno.png';
-import post1 from '@/assets/figma/profile/post-1.jpg';
-import post2 from '@/assets/figma/profile/post-2.jpg';
-import post3 from '@/assets/figma/profile/post-3.jpg';
-import post4 from '@/assets/figma/profile/post-4.jpg';
-import post5 from '@/assets/figma/profile/post-5.jpg';
-import post6 from '@/assets/figma/profile/post-6.jpg';
+import oscar from '@/assets/images/profile/pet-oscar.png';
+import eva from '@/assets/images/profile/pet-eva.png';
+import bruno from '@/assets/images/profile/pet-bruno.png';
+import post1 from '@/assets/images/profile/post-1.jpg';
+import post2 from '@/assets/images/profile/post-2.jpg';
+import post3 from '@/assets/images/profile/post-3.jpg';
+import post4 from '@/assets/images/profile/post-4.jpg';
+import post5 from '@/assets/images/profile/post-5.jpg';
+import post6 from '@/assets/images/profile/post-6.jpg';
 
 /* The signed-in user's own pets and posts (Figma: 05 · Profile). */
 export const MY_PETS = [
@@ -28,12 +28,12 @@ export const MY_BIO =
   'Dog mom to Oscar, Eva & Bruno. Sharing everyday pet-care tips, training wins and slow golden-hour walks.';
 
 /* ---------- My pet profiles (Figma: 08 · My pet’s profile) ---------- */
-import mikel from '@/assets/figma/pets/ben-2.jpg';
-import ben from '@/assets/figma/pets/ben.jpg';
-import max from '@/assets/figma/pets/max.jpg';
-import brunoPhoto from '@/assets/figma/pets/bruno.jpg';
-import evaPhoto from '@/assets/figma/pets/eva.jpg';
-import beach from '@/assets/figma/shell/post-photo.png';
+import mikel from '@/assets/images/pets/ben-2.jpg';
+import ben from '@/assets/images/pets/ben.jpg';
+import max from '@/assets/images/pets/max.jpg';
+import brunoPhoto from '@/assets/images/pets/bruno.jpg';
+import evaPhoto from '@/assets/images/pets/eva.jpg';
+import beach from '@/assets/images/shell/post-photo.png';
 
 const MOMENTS = [ben, max, brunoPhoto, mikel, beach, evaPhoto, ben, max];
 

@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ChoiceChip } from '@/components/app/common';
+import { ChoiceChip } from '@/components/app/AppPrimitives';
 import TextField from '@/components/app/TextField';
 import { useAuth, useCurrentUser } from '@/lib/auth';
 import { MY_BIO } from '@/data/me';
-import avatar from '@/assets/figma/settings/avatar-ria-64.png';
+import avatar from '@/assets/images/settings/avatar-ria-64.png';
 
 /* 19 · Settings · Edit profile — Figma 1491:3164 (1440) / 1491:3565 (390 "Edit profile") */
 

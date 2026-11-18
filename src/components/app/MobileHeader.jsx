@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import notificationsIcon from '@/assets/figma/shell/header-notifications.svg';
-import messagesIcon from '@/assets/figma/shell/header-messages.svg';
+import notificationsIcon from '@/assets/icons/header-notifications.svg';
+import messagesIcon from '@/assets/icons/header-messages.svg';
 
 /* Web / Mobile header (Figma 1475:153) — messages & notifications live here on mobile. */
 export default function MobileHeader({ className }) {

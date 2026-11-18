@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { SearchField } from './common';
+import { SearchField } from './AppPrimitives';
 
 /*
  * Page top bar (Figma "Top bar" 1476:200): 76px, white, bottom border.

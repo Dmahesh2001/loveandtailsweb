@@ -4,14 +4,14 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import ResponsiveModal from '@/components/app/ResponsiveModal';
 import { getMyPet } from '@/data/me';
-import NotFound from '@/pages/NotFound';
-import iconPlusWhite from '@/assets/figma/shell/icon-plus-white-20.svg';
-import iconPlusRed from '@/assets/figma/shell/icon-plus-red-20.svg';
-import iconDoc20 from '@/assets/figma/shell/icon-document-20.svg';
-import iconDoc22 from '@/assets/figma/shell/icon-document-22.svg';
-import iconChevron from '@/assets/figma/shell/icon-chevron-right.svg';
-import iconCamera from '@/assets/figma/shell/icon-camera.svg';
-import iconImage from '@/assets/figma/shell/icon-image.svg';
+import NotFound from '@/pages/status/NotFound';
+import iconPlusWhite from '@/assets/icons/icon-plus-white-20.svg';
+import iconPlusRed from '@/assets/icons/icon-plus-red-20.svg';
+import iconDoc20 from '@/assets/icons/icon-document-20.svg';
+import iconDoc22 from '@/assets/icons/icon-document-22.svg';
+import iconChevron from '@/assets/icons/icon-chevron-right.svg';
+import iconCamera from '@/assets/icons/icon-camera.svg';
+import iconImage from '@/assets/icons/icon-image.svg';
 
 /*
  * 09 · Documents — Figma 1487:1459 (1440) / 1487:1844 (768) / 1487:2205 (390)

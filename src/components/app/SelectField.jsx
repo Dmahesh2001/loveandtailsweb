@@ -1,6 +1,6 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
-import iconChevronDown from '@/assets/figma/shell/icon-chevron-down.svg';
+import iconChevronDown from '@/assets/icons/icon-chevron-down.svg';
 
 /*
  * Text Field, Filled state with trailing chevron (Figma 1279:35) used as a select:
