@@ -55,6 +55,10 @@ Breakpoints follow the Figma frames: **390** mobile (mobile header + bottom tab 
 | `/search` | (no Figma frame — composed from the design system) |
 | `/coming-soon` | the original pre-launch page |
 
+## Under construction mode
+
+While `VITE_UNDER_CONSTRUCTION` is `true`, every route shows the "We're building" page (`src/pages/UnderConstruction.jsx`): the clay puppy plus a waitlist signup. Left unset, it's **on in production builds** and off in dev, where `/building` previews the page. To launch, set `VITE_UNDER_CONSTRUCTION=false` in Vercel's environment variables and redeploy.
+
 ## Backend
 
 Auth, the signed-in user's profile and the waitlist use [LTBackend](../../backend/LTBackend) (Django REST API). Everything else (feed, pets, moments, messages, adoption) is still mocked in `src/data/`.
