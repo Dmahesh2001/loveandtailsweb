@@ -1,12 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import avatarMax from '@/assets/figma/applications/avatar-max.png';
-import cafe from '@/assets/figma/applications/cafe.jpg';
-import markerDone from '@/assets/figma/shell/marker-done.svg';
-import markerCurrent from '@/assets/figma/shell/marker-current.svg';
-import iconChatWhite from '@/assets/figma/shell/icon-chat-white.svg';
-import iconBack from '@/assets/figma/shell/icon-back.svg';
+import avatarMax from '@/assets/images/applications/avatar-max.png';
+import cafe from '@/assets/images/applications/cafe.jpg';
+import markerDone from '@/assets/icons/marker-done.svg';
+import markerCurrent from '@/assets/icons/marker-current.svg';
+import iconChatWhite from '@/assets/icons/icon-chat-white.svg';
+import iconBack from '@/assets/icons/icon-back.svg';
 
 /* 11 · Application status — Figma 1488:2010 (1440) / 1488:2148 (768) / 1488:2253 (390) */
 

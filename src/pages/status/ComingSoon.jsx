@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
-import IntroAnimation from '@/components/IntroAnimation';
+import Header from '@/components/common/Header';
+import IntroAnimation from '@/components/common/IntroAnimation';
 import Building from './Building';
 
 const HAS_SEEN_INTRO_KEY = 'loveandtails:hasSeenIntro';

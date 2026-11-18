@@ -6,16 +6,16 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { useObjectUrl } from '@/hooks/use-object-url';
-import { ChoiceChip } from '@/components/app/common';
+import { ChoiceChip } from '@/components/app/AppPrimitives';
 import { useCurrentUser } from '@/lib/auth';
 import HomeFeed from './HomeFeed';
-import meAvatar from '@/assets/figma/home/me-avatar.png';
-import samplePhoto from '@/assets/figma/shell/post-photo.png';
-import iconClose from '@/assets/figma/shell/icon-close.svg';
-import iconCloseWhite from '@/assets/figma/shell/icon-close-white.svg';
-import iconPaw from '@/assets/figma/shell/icon-paw-print.svg';
-import iconImage from '@/assets/figma/shell/icon-image-24.svg';
-import iconCamera from '@/assets/figma/shell/icon-camera-24.svg';
+import meAvatar from '@/assets/images/home/me-avatar.png';
+import samplePhoto from '@/assets/images/shell/post-photo.png';
+import iconClose from '@/assets/icons/icon-close.svg';
+import iconCloseWhite from '@/assets/icons/icon-close-white.svg';
+import iconPaw from '@/assets/icons/icon-paw-print.svg';
+import iconImage from '@/assets/icons/icon-image-24.svg';
+import iconCamera from '@/assets/icons/icon-camera-24.svg';
 
 /*
  * 12 · Create post — Figma 1488:2291 (1440 modal over Home) / 1488:2486 (768) / 1488:2563 (390 full screen)

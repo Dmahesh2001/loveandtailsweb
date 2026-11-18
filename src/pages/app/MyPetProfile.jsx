@@ -3,13 +3,13 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { ChipTabs } from '@/components/app/common';
+import { ChipTabs } from '@/components/app/AppPrimitives';
 import { getMyPet } from '@/data/me';
-import NotFound from '@/pages/NotFound';
-import iconEdit from '@/assets/figma/shell/icon-edit-white.svg';
-import iconShare from '@/assets/figma/shell/icon-share-18.svg';
-import iconBack from '@/assets/figma/shell/icon-back.svg';
-import iconMore from '@/assets/figma/shell/icon-more.svg';
+import NotFound from '@/pages/status/NotFound';
+import iconEdit from '@/assets/icons/icon-edit-white.svg';
+import iconShare from '@/assets/icons/icon-share-18.svg';
+import iconBack from '@/assets/icons/icon-back.svg';
+import iconMore from '@/assets/icons/icon-more.svg';
 
 /*
  * 08 · My pet’s profile — Figma 1484:1520 (1440) / 1484:1643 (768) / 1484:1750 (390)

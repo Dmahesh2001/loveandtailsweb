@@ -1,5 +1,5 @@
 import React from 'react';
-import logoColor from '../assets/logos/Love&Tails.svg';
+import logoColor from '@/assets/logos/logo-color.svg';
 import './Header.css';
 
 const Header = () => {

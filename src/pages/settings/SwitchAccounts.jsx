@@ -6,12 +6,12 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } fr
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import HomeFeed from '@/pages/app/HomeFeed';
-import ria from '@/assets/figma/settings/account-ria.png';
-import oscar from '@/assets/figma/settings/account-oscar.png';
-import shelter from '@/assets/figma/settings/account-shelter.png';
-import iconClose from '@/assets/figma/shell/icon-close.svg';
-import iconCheckWhite from '@/assets/figma/shell/icon-check-white.svg';
-import iconPlus from '@/assets/figma/shell/icon-plus-20.svg';
+import ria from '@/assets/images/settings/account-ria.png';
+import oscar from '@/assets/images/settings/account-oscar.png';
+import shelter from '@/assets/images/settings/account-shelter.png';
+import iconClose from '@/assets/icons/icon-close.svg';
+import iconCheckWhite from '@/assets/icons/icon-check-white.svg';
+import iconPlus from '@/assets/icons/icon-plus-20.svg';
 
 /* Switch accounts — Figma 1493:2976 (1440 modal over Home) / 1493:3039 (768) / 1493:3100 (390) */
 

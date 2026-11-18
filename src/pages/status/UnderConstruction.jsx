@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Check, Hammer } from 'lucide-react';
-import clayPuppy from '@/assets/figma/onboarding/clay-add-your-pet.png';
+import clayPuppy from '@/assets/images/onboarding/clay-add-your-pet.png';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { api } from '@/lib/api';
+import { api } from '@/services';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

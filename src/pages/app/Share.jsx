@@ -3,7 +3,7 @@ import ShareDialog from '@/components/app/ShareDialog';
 import HomeFeed from './HomeFeed';
 
 /* /share — the Share sheet over the Home feed, as drawn in Figma (1493:3285). */
-export default function SharePage() {
+export default function Share() {
   const navigate = useNavigate();
   return (
     <>

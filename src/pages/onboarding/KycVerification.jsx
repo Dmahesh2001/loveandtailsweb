@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import FocusLayout from '@/components/onboarding/FocusLayout';
-import kycPhone from '@/assets/figma/onboarding/kyc-phone.png';
-import iconCameraWhite from '@/assets/figma/shell/icon-camera-white.svg';
-import iconBack from '@/assets/figma/shell/icon-back.svg';
+import kycPhone from '@/assets/images/onboarding/kyc-phone.png';
+import iconCameraWhite from '@/assets/icons/icon-camera-white.svg';
+import iconBack from '@/assets/icons/icon-back.svg';
 
 /* 18 · KYC verification — Figma 1491:2937 (1440) / 1491:2987 (768) / 1491:3037 (390) */
 

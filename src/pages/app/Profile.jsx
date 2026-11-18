@@ -3,15 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { ChipTabs } from '@/components/app/common';
+import { ChipTabs } from '@/components/app/AppPrimitives';
 import { useCurrentUser } from '@/lib/auth';
 import { MY_BIO, MY_PETS, MY_POSTS, MY_STATS } from '@/data/me';
-import cover from '@/assets/figma/shell/post-photo.png';
-import avatar from '@/assets/figma/profile/avatar-ria.png';
-import iconEdit from '@/assets/figma/shell/icon-edit-white.svg';
-import iconShare from '@/assets/figma/shell/icon-share-profile.svg';
-import iconBack from '@/assets/figma/shell/icon-back.svg';
-import iconMore from '@/assets/figma/shell/icon-more.svg';
+import cover from '@/assets/images/shell/post-photo.png';
+import avatar from '@/assets/images/profile/avatar-ria.png';
+import iconEdit from '@/assets/icons/icon-edit-white.svg';
+import iconShare from '@/assets/icons/icon-share-profile.svg';
+import iconBack from '@/assets/icons/icon-back.svg';
+import iconMore from '@/assets/icons/icon-more.svg';
 
 /*
  * 05 · Profile — Figma 1480:924 (1440) / 1480:1054 (768) / 1480:1169 (390)

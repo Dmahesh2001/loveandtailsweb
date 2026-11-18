@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import tabHome from '@/assets/figma/shell/tab-home.svg';
-import tabSearch from '@/assets/figma/shell/tab-search.svg';
-import tabAdopt from '@/assets/figma/shell/tab-adopt.svg';
-import tabProfile from '@/assets/figma/shell/tab-profile.svg';
-import iconPlus from '@/assets/figma/shell/icon-plus.svg';
+import tabHome from '@/assets/icons/tab-home.svg';
+import tabSearch from '@/assets/icons/tab-search.svg';
+import tabAdopt from '@/assets/icons/tab-adopt.svg';
+import tabProfile from '@/assets/icons/tab-profile.svg';
+import iconPlus from '@/assets/icons/icon-plus.svg';
 
 /* Web / Tab bar (Figma 1475:165) — mobile web: Home, Search, Create, Adopt, Profile. */
 const TABS = [

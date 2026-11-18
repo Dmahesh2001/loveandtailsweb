@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import InputField from '../components/InputField';
-import PrimaryButton from '../components/PrimaryButton';
-import Toast from '../components/Toast';
-import { api } from '../lib/api';
+import InputField from '@/components/common/InputField';
+import PrimaryButton from '@/components/common/PrimaryButton';
+import Toast from '@/components/common/Toast';
+import { api } from '@/services';
 import './Building.css';
 
 const STORY_LINES = [

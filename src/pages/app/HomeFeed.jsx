@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { PAGE_CONTAINER } from '@/components/app/TopBar';
-import { Card, ChipTabs, PetRow, PostCard } from '@/components/app/common';
+import { Card, ChipTabs, PetRow, PostCard } from '@/components/app/AppPrimitives';
 import { Button } from '@/components/ui/button';
 import FeedSkeleton from '@/components/app/FeedSkeleton';
 import { useCurrentUser } from '@/lib/auth';
-import petMax from '@/assets/figma/pets/max.jpg';
-import petEva from '@/assets/figma/pets/eva.jpg';
-import petBruno from '@/assets/figma/pets/bruno.jpg';
-import petBen from '@/assets/figma/pets/ben.jpg';
-import meAvatar from '@/assets/figma/home/me-avatar.png';
+import petMax from '@/assets/images/pets/max.jpg';
+import petEva from '@/assets/images/pets/eva.jpg';
+import petBruno from '@/assets/images/pets/bruno.jpg';
+import petBen from '@/assets/images/pets/ben.jpg';
+import meAvatar from '@/assets/images/home/me-avatar.png';
 import { MOMENTS, formatCount } from '@/data/moments';
 
 /* 01 · Home feed — Figma 1476:141 (1440) / 1476:287 (768) / 1476:390 (390) */

@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Bookmark, Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ResponsiveModal from '@/components/app/ResponsiveModal';
-import Toast from '@/components/Toast';
+import Toast from '@/components/common/Toast';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,20 +14,20 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { useCurrentUser } from '@/lib/auth';
 import { MOMENTS, MOMENT_COMMENTS, formatCount } from '@/data/moments';
-import iconHeart from '@/assets/figma/moments/icon-heart-28.svg';
-import iconComment from '@/assets/figma/moments/icon-comment-28.svg';
-import iconShare from '@/assets/figma/moments/icon-share-28.svg';
-import iconBookmark from '@/assets/figma/moments/icon-bookmark-28.svg';
-import iconMore from '@/assets/figma/moments/icon-more-28.svg';
-import iconHeartWhite from '@/assets/figma/moments/icon-heart-white-24.svg';
-import iconCommentWhite from '@/assets/figma/moments/icon-comment-white-24.svg';
-import iconSendWhite from '@/assets/figma/moments/icon-send-white-24.svg';
-import iconMoreWhite from '@/assets/figma/moments/icon-more-white-24.svg';
-import iconMusic from '@/assets/figma/moments/icon-music-white-18.svg';
-import iconChevronDown from '@/assets/figma/moments/icon-chevron-down-white-24.svg';
-import iconPlusWhite from '@/assets/figma/moments/icon-plus-white-24.svg';
-import iconMenu from '@/assets/figma/moments/icon-menu-white-24.svg';
-import iconSend from '@/assets/figma/shell/icon-send.svg';
+import iconHeart from '@/assets/icons/icon-heart-28.svg';
+import iconComment from '@/assets/icons/icon-comment-28.svg';
+import iconShare from '@/assets/icons/icon-share-28.svg';
+import iconBookmark from '@/assets/icons/icon-bookmark-28.svg';
+import iconMore from '@/assets/icons/icon-more-28.svg';
+import iconHeartWhite from '@/assets/icons/icon-heart-white-24.svg';
+import iconCommentWhite from '@/assets/icons/icon-comment-white-24.svg';
+import iconSendWhite from '@/assets/icons/icon-send-white-24.svg';
+import iconMoreWhite from '@/assets/icons/icon-more-white-24.svg';
+import iconMusic from '@/assets/icons/icon-music-white-18.svg';
+import iconChevronDown from '@/assets/icons/icon-chevron-down-white-24.svg';
+import iconPlusWhite from '@/assets/icons/icon-plus-white-24.svg';
+import iconMenu from '@/assets/icons/icon-menu-white-24.svg';
+import iconSend from '@/assets/icons/icon-send.svg';
 
 /*
  * 13 · Moments (Figma "Reels") — 1488:2730 (1440) / 1488:2821 (768) / 1488:2901 (390)

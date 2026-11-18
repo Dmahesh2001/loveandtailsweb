@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import iconBack from '@/assets/figma/shell/icon-back.svg';
-import radioOn from '@/assets/figma/shell/radio-on.svg';
-import radioOff from '@/assets/figma/shell/radio-off.svg';
+import iconBack from '@/assets/icons/icon-back.svg';
+import radioOn from '@/assets/icons/radio-on.svg';
+import radioOff from '@/assets/icons/radio-off.svg';
 
 /* Progress Bar (Figma 1280:19) — 4px track, brand fill pinned left. */
 export function ProgressBar({ value, className }) {

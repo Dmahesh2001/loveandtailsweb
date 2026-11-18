@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import heroFetch from '@/assets/figma/landing/hero-fetch.jpg';
-import heroLabrador from '@/assets/figma/landing/hero-labrador.jpg';
-import heroCat from '@/assets/figma/landing/hero-cat.jpg';
-import heroCuddle from '@/assets/figma/landing/hero-cuddle.jpg';
-import avatarOscar from '@/assets/figma/landing/avatar-oscar.png';
-import featureSwim from '@/assets/figma/landing/feature-swim.jpg';
-import featureAdopt from '@/assets/figma/pets/max.jpg';
-import featurePack from '@/assets/figma/pets/eva.jpg';
+import heroFetch from '@/assets/images/landing/hero-fetch.jpg';
+import heroLabrador from '@/assets/images/landing/hero-labrador.jpg';
+import heroCat from '@/assets/images/landing/hero-cat.jpg';
+import heroCuddle from '@/assets/images/landing/hero-cuddle.jpg';
+import avatarOscar from '@/assets/images/landing/avatar-oscar.png';
+import featureSwim from '@/assets/images/landing/feature-swim.jpg';
+import featureAdopt from '@/assets/images/pets/max.jpg';
+import featurePack from '@/assets/images/pets/eva.jpg';
 
 /*
  * Landing — Figma 1495:13393 (1440) / 1495:13461 (768) / 1495:13523 (390).

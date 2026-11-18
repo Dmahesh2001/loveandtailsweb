@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ChipTabs, PetCard, SearchField } from '@/components/app/common';
+import { ChipTabs, PetCard, SearchField } from '@/components/app/AppPrimitives';
 import { Button } from '@/components/ui/button';
 import { PETS } from '@/data/pets';
-import iconFilter from '@/assets/figma/shell/icon-filter.svg';
+import iconFilter from '@/assets/icons/icon-filter.svg';
 
 /* 04 · Adopt — Figma 1479:600 (1440) / 1479:782 (768) / 1479:923 (390) */
 

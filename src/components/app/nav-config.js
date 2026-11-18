@@ -1,20 +1,20 @@
-import iconHome from '@/assets/figma/shell/nav-icon-home.svg';
-import iconHomeActive from '@/assets/figma/shell/nav-icon-home-filled.svg';
-import iconSearch from '@/assets/figma/shell/nav-icon-search.svg';
-import iconSearchActive from '@/assets/figma/shell/nav-icon-search-filled.svg';
-import iconMoments from '@/assets/figma/shell/nav-icon-moments.svg';
-import iconMomentsActive from '@/assets/figma/shell/nav-icon-moments-filled.svg';
-import iconAdopt from '@/assets/figma/shell/nav-icon-adopt.svg';
-import iconAdoptActive from '@/assets/figma/shell/nav-icon-adopt-filled.svg';
-import iconMessages from '@/assets/figma/shell/nav-icon-messages.svg';
-import iconMessagesActive from '@/assets/figma/shell/nav-icon-messages-filled.svg';
-import iconNotifications from '@/assets/figma/shell/nav-icon-notifications.svg';
-import iconNotificationsActive from '@/assets/figma/shell/nav-icon-notifications-filled.svg';
-import iconCreate from '@/assets/figma/shell/nav-icon-create.svg';
-import iconCreateActive from '@/assets/figma/shell/nav-icon-create-filled.svg';
-import iconMore from '@/assets/figma/shell/nav-icon-more.svg';
-import iconMoreActive from '@/assets/figma/shell/nav-icon-more-filled.svg';
-import avatar from '@/assets/figma/shell/web-nav-avatar.png';
+import iconHome from '@/assets/icons/nav-icon-home.svg';
+import iconHomeActive from '@/assets/icons/nav-icon-home-filled.svg';
+import iconSearch from '@/assets/icons/nav-icon-search.svg';
+import iconSearchActive from '@/assets/icons/nav-icon-search-filled.svg';
+import iconMoments from '@/assets/icons/nav-icon-moments.svg';
+import iconMomentsActive from '@/assets/icons/nav-icon-moments-filled.svg';
+import iconAdopt from '@/assets/icons/nav-icon-adopt.svg';
+import iconAdoptActive from '@/assets/icons/nav-icon-adopt-filled.svg';
+import iconMessages from '@/assets/icons/nav-icon-messages.svg';
+import iconMessagesActive from '@/assets/icons/nav-icon-messages-filled.svg';
+import iconNotifications from '@/assets/icons/nav-icon-notifications.svg';
+import iconNotificationsActive from '@/assets/icons/nav-icon-notifications-filled.svg';
+import iconCreate from '@/assets/icons/nav-icon-create.svg';
+import iconCreateActive from '@/assets/icons/nav-icon-create-filled.svg';
+import iconMore from '@/assets/icons/nav-icon-more.svg';
+import iconMoreActive from '@/assets/icons/nav-icon-more-filled.svg';
+import avatar from '@/assets/images/shell/web-nav-avatar.png';
 
 export const ME = {
   name: 'Ria Madrid',

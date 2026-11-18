@@ -2,20 +2,20 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { ChipTabs, SearchField } from '@/components/app/common';
+import { ChipTabs, SearchField } from '@/components/app/AppPrimitives';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import iconPlus from '@/assets/figma/shell/icon-attach-plus.svg';
-import iconSend from '@/assets/figma/shell/icon-send.svg';
-import iconMore from '@/assets/figma/shell/icon-more.svg';
-import elena from '@/assets/figma/messages/avatar-elena.png';
-import marcus from '@/assets/figma/messages/avatar-marcus.png';
-import sarah from '@/assets/figma/messages/avatar-sarah.png';
-import julia from '@/assets/figma/messages/avatar-julia.png';
+import iconPlus from '@/assets/icons/icon-attach-plus.svg';
+import iconSend from '@/assets/icons/icon-send.svg';
+import iconMore from '@/assets/icons/icon-more.svg';
+import elena from '@/assets/images/messages/avatar-elena.png';
+import marcus from '@/assets/images/messages/avatar-marcus.png';
+import sarah from '@/assets/images/messages/avatar-sarah.png';
+import julia from '@/assets/images/messages/avatar-julia.png';
 
 /* 03 · Messages — Figma 1478:410 (1440) / 1478:553 (768) / 1478:679 (390) */
 

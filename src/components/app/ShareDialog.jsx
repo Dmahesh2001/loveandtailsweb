@@ -3,13 +3,13 @@ import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import ResponsiveModal from './ResponsiveModal';
-import { SearchField } from './common';
-import oscar from '@/assets/figma/profile/pet-oscar.png';
-import eva from '@/assets/figma/profile/pet-eva.png';
-import bruno from '@/assets/figma/profile/pet-bruno.png';
-import ria from '@/assets/figma/profile/avatar-ria.png';
-import iconShare from '@/assets/figma/shell/icon-share-18.svg';
-import iconPlus from '@/assets/figma/shell/icon-plus-20.svg';
+import { SearchField } from './AppPrimitives';
+import oscar from '@/assets/images/profile/pet-oscar.png';
+import eva from '@/assets/images/profile/pet-eva.png';
+import bruno from '@/assets/images/profile/pet-bruno.png';
+import ria from '@/assets/images/profile/avatar-ria.png';
+import iconShare from '@/assets/icons/icon-share-18.svg';
+import iconPlus from '@/assets/icons/icon-plus-20.svg';
 
 /* Share — Figma 1493:3285 (1440 modal) / 1493:3371 (768) / 1493:3454 (390 bottom sheet) */
 

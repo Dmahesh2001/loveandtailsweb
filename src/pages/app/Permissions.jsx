@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import HomeFeed from './HomeFeed';
-import illustration from '@/assets/figma/onboarding/kyc-phone.png';
+import illustration from '@/assets/images/onboarding/kyc-phone.png';
 
 /*
  * Permissions — Figma 1495:13056 (1440) / 1495:13112 (768) / 1495:13163 (390).

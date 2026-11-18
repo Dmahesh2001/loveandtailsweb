@@ -1,13 +1,13 @@
-import ben from '@/assets/figma/pets/ben.jpg';
-import ben2 from '@/assets/figma/pets/ben-2.jpg';
-import max from '@/assets/figma/pets/max.jpg';
-import luna from '@/assets/figma/pets/luna.jpg';
-import coco from '@/assets/figma/pets/coco.jpg';
-import pip from '@/assets/figma/pets/pip.jpg';
-import eva from '@/assets/figma/pets/eva.jpg';
-import bruno from '@/assets/figma/pets/bruno.jpg';
-import shadow from '@/assets/figma/pets/shadow.jpg';
-import shelterAvatar from '@/assets/figma/shell/avatar.png';
+import ben from '@/assets/images/pets/ben.jpg';
+import ben2 from '@/assets/images/pets/ben-2.jpg';
+import max from '@/assets/images/pets/max.jpg';
+import luna from '@/assets/images/pets/luna.jpg';
+import coco from '@/assets/images/pets/coco.jpg';
+import pip from '@/assets/images/pets/pip.jpg';
+import eva from '@/assets/images/pets/eva.jpg';
+import bruno from '@/assets/images/pets/bruno.jpg';
+import shadow from '@/assets/images/pets/shadow.jpg';
+import shelterAvatar from '@/assets/images/shell/avatar.png';
 
 /* Mock adoption listings (copy from Figma: 04 · Adopt, 07 · Pet details). */
 

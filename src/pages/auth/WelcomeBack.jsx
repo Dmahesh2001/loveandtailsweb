@@ -1,8 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth, useCurrentUser } from '@/lib/auth';
 import { Button } from '@/components/ui/button';
-import photo from '@/assets/figma/auth/welcome-photo.jpg';
-import avatar from '@/assets/figma/auth/welcome-avatar.png';
+import photo from '@/assets/images/auth/welcome-photo.jpg';
+import avatar from '@/assets/images/auth/welcome-avatar.png';
 
 /*
  * 14 · Welcome back — Figma 1490:2615 (1440) / 1490:2632 (768) / 1490:2646 (390)
