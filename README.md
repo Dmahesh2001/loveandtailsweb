@@ -70,4 +70,6 @@ Auth, the signed-in user's profile and the waitlist use [LTBackend](../../backen
 
 Signed-in routes (the app shell, onboarding, KYC, editor) redirect to `/login` without a session and come back afterwards. Access tokens refresh automatically on a `401`.
 
-The API URL comes from `VITE_API_URL` (default `http://localhost:8000/api/v1`). To point elsewhere, copy `.env.example` to `.env.local`. The backend must list the web origin in `CORS_ALLOWED_ORIGINS` (it allows `http://localhost:3000` by default).
+The API URL comes from `VITE_API_URL`. Without it, dev uses `http://localhost:8000/api/v1` and production builds use `https://api.loveandtails.com/api/v1`. To point elsewhere, copy `.env.example` to `.env.local`. The backend must list the web origin in `CORS_ALLOWED_ORIGINS` (it allows `http://localhost:3000` by default), so add the Vercel domain to it in production.
+
+Vercel deploys use [vercel.json](vercel.json): Vite preset, output in `dist`, and a rewrite to `index.html` so client-side routes work on refresh.

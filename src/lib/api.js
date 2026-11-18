@@ -7,7 +7,11 @@
  * token refresh (shared by concurrent callers) and a retry.
  */
 
-export const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1').replace(/\/+$/, '');
+const DEFAULT_API_URL = import.meta.env.PROD
+  ? 'https://api.loveandtails.com/api/v1'
+  : 'http://localhost:8000/api/v1';
+
+export const API_URL = (import.meta.env.VITE_API_URL || DEFAULT_API_URL).replace(/\/+$/, '');
 
 const TOKENS_KEY = 'loveandtails:tokens';
 
