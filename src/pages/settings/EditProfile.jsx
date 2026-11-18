@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChoiceChip } from '@/components/app/common';
 import TextField from '@/components/app/TextField';
-import { ME } from '@/components/app/nav-config';
+import { useAuth, useCurrentUser } from '@/lib/auth';
 import { MY_BIO } from '@/data/me';
 import avatar from '@/assets/figma/settings/avatar-ria-64.png';
 
@@ -11,23 +11,60 @@ import avatar from '@/assets/figma/settings/avatar-ria-64.png';
 
 const ROLES = ['Pet owner', 'Pet lover', 'Pet caregiver'];
 
+function FieldWithError({ error, children }) {
+  return (
+    <div className="flex flex-col gap-1">
+      {children}
+      {error && <p className="text-[13px] text-destructive">{error}</p>}
+    </div>
+  );
+}
+
 export default function EditProfile() {
   const navigate = useNavigate();
   const fileRef = useRef(null);
-  const initial = { name: ME.name, username: ME.handle, bio: MY_BIO, location: ME.location, role: 'Pet owner' };
+  const { user, updateProfile } = useAuth();
+  const ME = useCurrentUser();
+  // first_name, last_name and phone_number are saved to LTBackend (PATCH /users/me/).
+  // Bio, location and role have no backend field yet, so they only live in this form.
+  const initial = {
+    first_name: user?.first_name ?? '',
+    last_name: user?.last_name ?? '',
+    phone_number: user?.phone_number ?? '',
+    bio: MY_BIO,
+    location: ME.location,
+    role: 'Pet owner',
+  };
   const [form, setForm] = useState(initial);
   const [photo, setPhoto] = useState(avatar);
   const [saved, setSaved] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [errors, setErrors] = useState({});
   const set = (k) => (e) => {
     setSaved(false);
+    setErrors(({ [k]: _, form: __, ...rest }) => rest);
     setForm((f) => ({ ...f, [k]: e.target ? e.target.value : e }));
   };
+  const displayName = [form.first_name, form.last_name].filter(Boolean).join(' ') || ME.name;
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        setSaved(true);
+        setSaving(true);
+        setErrors({});
+        try {
+          await updateProfile({
+            first_name: form.first_name.trim(),
+            last_name: form.last_name.trim(),
+            phone_number: form.phone_number.trim(),
+          });
+          setSaved(true);
+        } catch (err) {
+          setErrors({ ...err.fieldErrors, form: Object.keys(err.fieldErrors ?? {}).length ? '' : err.message });
+        } finally {
+          setSaving(false);
+        }
       }}
       className="flex flex-col gap-[18px]"
     >
@@ -36,8 +73,8 @@ export default function EditProfile() {
       <div className="flex items-center gap-4 rounded-[20px] bg-[#f6f6f6] p-4">
         <img src={photo} alt="" width={64} height={64} className="size-16 rounded-full object-cover" />
         <div className="min-w-0 flex-1">
-          <p className="truncate text-base font-semibold text-ink">{form.name}</p>
-          <p className="truncate text-[13px] text-subtle">{form.username}</p>
+          <p className="truncate text-base font-semibold text-ink">{displayName}</p>
+          <p className="truncate text-[13px] text-subtle">{ME.email}</p>
         </div>
         <input
           ref={fileRef}
@@ -55,8 +92,16 @@ export default function EditProfile() {
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">
-        <TextField label="Name" value={form.name} onChange={set('name')} autoComplete="name" />
-        <TextField label="Username" value={form.username} onChange={set('username')} autoComplete="username" />
+        <FieldWithError error={errors.first_name}>
+          <TextField label="First name" value={form.first_name} onChange={set('first_name')} autoComplete="given-name" />
+        </FieldWithError>
+        <FieldWithError error={errors.last_name}>
+          <TextField label="Last name" value={form.last_name} onChange={set('last_name')} autoComplete="family-name" />
+        </FieldWithError>
+        <TextField label="Email" value={ME.email ?? ''} readOnly className="bg-[#f6f6f6]" inputClassName="text-subtle" />
+        <FieldWithError error={errors.phone_number}>
+          <TextField label="Phone" type="tel" value={form.phone_number} onChange={set('phone_number')} autoComplete="tel" />
+        </FieldWithError>
       </div>
       <textarea
         aria-label="Bio"
@@ -76,8 +121,8 @@ export default function EditProfile() {
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <Button type="submit" size="pill-lg">
-          Save changes
+        <Button type="submit" size="pill-lg" disabled={saving}>
+          {saving ? 'Saving…' : 'Save changes'}
         </Button>
         <Button
           type="button"
@@ -91,6 +136,11 @@ export default function EditProfile() {
           Cancel
         </Button>
         {saved && <span className="text-sm font-medium text-success">Saved</span>}
+        {errors.form && (
+          <span role="alert" className="text-sm font-medium text-destructive">
+            {errors.form}
+          </span>
+        )}
       </div>
     </form>
   );

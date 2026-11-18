@@ -4,7 +4,7 @@ import { PAGE_CONTAINER } from '@/components/app/TopBar';
 import { Card, ChipTabs, PetRow, PostCard } from '@/components/app/common';
 import { Button } from '@/components/ui/button';
 import FeedSkeleton from '@/components/app/FeedSkeleton';
-import { ME } from '@/components/app/nav-config';
+import { useCurrentUser } from '@/lib/auth';
 import petMax from '@/assets/figma/pets/max.jpg';
 import petEva from '@/assets/figma/pets/eva.jpg';
 import petBruno from '@/assets/figma/pets/bruno.jpg';
@@ -34,6 +34,7 @@ const POSTS = [
 ];
 
 function Composer() {
+  const ME = useCurrentUser();
   return (
     <Card className="flex items-center gap-3 px-4 py-3.5">
       <img src={meAvatar} alt={ME.name} width={40} height={40} className="size-10 rounded-full" />

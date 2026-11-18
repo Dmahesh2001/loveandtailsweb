@@ -2,7 +2,7 @@ import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-do
 import { ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/hooks/use-media-query';
-import { ME } from '@/components/app/nav-config';
+import { useAuth, useCurrentUser } from '@/lib/auth';
 import { MY_PETS } from '@/data/me';
 import iconBack from '@/assets/figma/shell/icon-back.svg';
 import notificationsIcon from '@/assets/figma/shell/header-notifications.svg';
@@ -42,13 +42,15 @@ export const SETTINGS_GROUPS = [
     title: 'Support',
     items: [
       { label: 'Help centre', to: '/settings/help' },
-      { label: 'Log out', to: '/login', danger: true },
+      { label: 'Log out', to: '/login', danger: true, logout: true },
     ],
   },
 ];
 
 function SettingsMenu({ className, highlightRoot = true }) {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const { logout } = useAuth();
   return (
     <nav className={cn('flex flex-col gap-5', className)}>
       {SETTINGS_GROUPS.map((g) => (
@@ -62,6 +64,15 @@ function SettingsMenu({ className, highlightRoot = true }) {
               <NavLink
                 key={item.label}
                 to={item.to}
+                onClick={
+                  item.logout
+                    ? async (e) => {
+                        e.preventDefault();
+                        await logout();
+                        navigate('/login', { replace: true });
+                      }
+                    : undefined
+                }
                 className={cn(
                   'flex items-center rounded-xl px-3 py-2.5 text-[15px] transition-colors hover:bg-black/[0.03]',
                   active ? 'bg-[#f6f6f6] font-semibold text-ink' : 'text-ink',
@@ -81,6 +92,7 @@ function SettingsMenu({ className, highlightRoot = true }) {
 /* Mobile Account hub (Figma 1491:3348). */
 function AccountHub() {
   const navigate = useNavigate();
+  const ME = useCurrentUser();
   return (
     <div className="flex flex-col gap-5 bg-[#fafafa] px-4 pt-6 pb-10">
       <div className="flex items-center">

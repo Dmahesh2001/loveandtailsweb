@@ -7,7 +7,7 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } fr
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { useObjectUrl } from '@/hooks/use-object-url';
 import { ChoiceChip } from '@/components/app/common';
-import { ME } from '@/components/app/nav-config';
+import { useCurrentUser } from '@/lib/auth';
 import HomeFeed from './HomeFeed';
 import meAvatar from '@/assets/figma/home/me-avatar.png';
 import samplePhoto from '@/assets/figma/shell/post-photo.png';
@@ -26,6 +26,7 @@ import iconCamera from '@/assets/figma/shell/icon-camera-24.svg';
 const PETS = ['Mikel', 'Oscar', 'Eva', 'Bruno'];
 
 function Composer({ onDone, Close }) {
+  const ME = useCurrentUser();
   const navigate = useNavigate();
   const { state } = useLocation();
   const [text, setText] = useState(state?.draft?.text ?? '');

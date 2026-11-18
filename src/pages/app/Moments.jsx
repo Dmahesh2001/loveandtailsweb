@@ -12,7 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { ME } from '@/components/app/nav-config';
+import { useCurrentUser } from '@/lib/auth';
 import { MOMENTS, MOMENT_COMMENTS, formatCount } from '@/data/moments';
 import iconHeart from '@/assets/figma/moments/icon-heart-28.svg';
 import iconComment from '@/assets/figma/moments/icon-comment-28.svg';
@@ -269,6 +269,7 @@ function Moment({ moment, index, active, s, on }) {
 }
 
 function CommentsPanel({ moment, extra, onAdd }) {
+  const ME = useCurrentUser();
   const [text, setText] = useState('');
   const [liked, setLiked] = useState(() => new Set());
   const comments = [...extra, ...MOMENT_COMMENTS];
@@ -347,6 +348,7 @@ const toggleIn = (setter, key) =>
   });
 
 export default function Moments() {
+  const ME = useCurrentUser();
   const { momentId } = useParams();
   const navigate = useNavigate();
   const scroller = useRef(null);
